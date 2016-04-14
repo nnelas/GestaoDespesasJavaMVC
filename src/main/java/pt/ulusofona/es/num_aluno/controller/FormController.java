@@ -54,7 +54,7 @@ public class FormController {
         em.persist(utilizador);
 
         model.addAttribute("message", "Sucesso! O utilizador " + utilizador.getName() +
-                " foi gravado na BD e foi-lhe atribuído o id " + utilizador.getId());
+                " foi gravado na BD e foi-lhe atribuÃ­do o id " + utilizador.getId());
         return "result";
     }
 
