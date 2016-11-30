@@ -9,17 +9,15 @@
     <c:when test="${not empty despesas}">
     <table border="1">
         <tr>
-            <th>id</th>
-            <th>categoria</th>
-            <th>descrição</th>
-            <th>localização</th>
+            <th>Data</th>
+            <th>Categoria</th>
+            <th>Valor</th>
         </tr>
         <c:forEach var="despesa" items="${despesas}">
             <tr>
-                <td>${despesa.id}</td>
+                <td>${despesa.data}</td>
                 <td>${despesa.categoria}</td>
-                <td>${despesa.descricao}</td>
-                <td>${despesa.localizacao}</td>
+                <td>${despesa.valor}</td>
                 <td><a href="/info/${despesa.id}">Mais info</a></td>
             </tr>
         </c:forEach>

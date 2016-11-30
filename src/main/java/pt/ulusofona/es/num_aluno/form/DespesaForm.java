@@ -10,6 +10,8 @@ import javax.validation.constraints.Size;
  */
 public class DespesaForm {
 
+    private Long id;
+
     @NotEmpty(message = "Tem que inserir a categoria de despesa.")
     private String categoria;
 
@@ -17,7 +19,7 @@ public class DespesaForm {
     private String data;
 
     @NotEmpty(message = "Tem que inserir a descrição da despesa.")
-    @Size(max=160, message = "A descrição tem que ter até 160 caracteres.")
+    @Size(max=160, message = "A despesa só pode conter até 160 caracteres.")
     private String descricao;
 
     @NotNull(message = "Tem que inserir o valor da despesa.")
@@ -27,6 +29,14 @@ public class DespesaForm {
 
     public String getCategoria() {
         return categoria;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setCategoria(String categoria) {

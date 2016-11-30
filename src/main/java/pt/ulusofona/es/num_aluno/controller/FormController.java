@@ -2,6 +2,7 @@ package pt.ulusofona.es.num_aluno.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -45,7 +46,12 @@ public class FormController {
             return "form";
         }
 
-        Despesa despesa = new Despesa();
+        Despesa despesa;
+        if(despesaForm.getId() != null) {
+            despesa = em.find(Despesa.class, despesaForm.getId());
+        } else {
+            despesa = new Despesa();
+        }
 
         despesa.setCategoria(despesaForm.getCategoria());
         despesa.setData(despesaForm.getData());
@@ -69,6 +75,30 @@ public class FormController {
         return "info";
     }
 
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    public String edit(ModelMap model, @PathVariable("id") Long id) {
+        Despesa despesa = em.find(Despesa.class, id);
+        DespesaForm despesaForm = new DespesaForm();
+        despesaForm.setId(despesa.getId());
+        despesaForm.setCategoria(despesa.getCategoria());
+        despesaForm.setData(despesa.getData());
+        despesaForm.setDescricao(despesa.getDescricao());
+        despesaForm.setValor(despesa.getValor());
+        despesaForm.setLocalizacao(despesa.getLocalizacao());
 
+        model.put("despesaForm", despesaForm);
+
+        return "form";
+    }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+    public String delete(ModelMap model, @PathVariable("id") Long id) {
+
+        Despesa despesa = em.find(Despesa.class, id);
+        em.remove(despesa);
+
+        model.addAttribute("message", "Sucesso! A despesa de " + despesa.getCategoria() + " no dia " + despesa.getData() + " foi eliminada");
+        return "result";
+    }
 }
 
