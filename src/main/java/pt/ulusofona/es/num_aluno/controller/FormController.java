@@ -5,8 +5,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pt.ulusofona.es.num_aluno.data.Utilizador;
-import pt.ulusofona.es.num_aluno.form.UserForm;
+import pt.ulusofona.es.num_aluno.data.Despesa;
+import pt.ulusofona.es.num_aluno.form.DespesaForm;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,22 +24,20 @@ public class FormController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String getList(ModelMap model) {
 
-        // obtem lista de utilizadores da BD
-
-        // adiciona ao model
-
+        List<Despesa> despesas = em.createQuery("select d from Despesa d", Despesa.class).getResultList();
+        model.put("despesas", despesas);
         return "list";
     }
 
 
     @RequestMapping(value = "/form", method = RequestMethod.GET)
     public String getForm(ModelMap model) {
-        model.put("userForm", new UserForm());
+        model.put("despesaForm", new DespesaForm());
         return "form";
     }
 
     @RequestMapping(value = "/form", method = RequestMethod.POST)
-    public String submitForm(@Valid @ModelAttribute("userForm") UserForm userForm,
+    public String submitForm(@Valid @ModelAttribute("despesaForm") DespesaForm despesaForm,
                              BindingResult bindingResult,
                              ModelMap model) {
 
@@ -47,23 +45,26 @@ public class FormController {
             return "form";
         }
 
-        Utilizador utilizador = new Utilizador();
+        Despesa despesa = new Despesa();
 
-        // faz set das propriedades do utilizador
+        despesa.setCategoria(despesaForm.getCategoria());
+        despesa.setData(despesaForm.getData());
+        despesa.setDescricao(despesaForm.getDescricao());
+        despesa.setValor(despesaForm.getValor());
+        despesa.setLocalizacao(despesaForm.getLocalizacao());
+        em.persist(despesa);
 
-        em.persist(utilizador);
-
-        model.addAttribute("message", "Sucesso! O utilizador " + utilizador.getName() +
-                " foi gravado na BD e foi-lhe atribuído o id " + utilizador.getId());
+        model.addAttribute("message", "Sucesso! A despesa de " + despesa.getCategoria() + " no dia " + despesa.getData() +
+                " foi gravada na BD e foi-lhe atribuído o id " + despesa.getId());
         return "result";
     }
 
     @RequestMapping(value = "/info/{id}", method = RequestMethod.GET)
     public String getInfo(ModelMap model, @PathVariable("id") Long id) {
 
-        Utilizador utilizador = em.find(Utilizador.class, id);
+        Despesa despesa = em.find(Despesa.class, id);
 
-        model.put("utilizador", utilizador);
+        model.put("despesa", despesa);
 
         return "info";
     }
