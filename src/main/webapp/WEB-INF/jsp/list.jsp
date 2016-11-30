@@ -2,23 +2,25 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-    <title>Lista de utilizadores</title>
+    <title>Lista de despesas</title>
 </head>
 <body>
 <c:choose>
-    <c:when test="${not empty utilizadores}">
+    <c:when test="${not empty despesas}">
     <table border="1">
         <tr>
             <th>id</th>
-            <th>nome</th>
-            <th>morada</th>
+            <th>categoria</th>
+            <th>descrição</th>
+            <th>localização</th>
         </tr>
-        <c:forEach var="utilizador" items="${utilizadores}">
+        <c:forEach var="despesa" items="${despesas}">
             <tr>
-                <td>${utilizador.id}</td>
-                <td>${utilizador.name}</td>
-                <td>${utilizador.address}</td>
-                <td><a href="/info/${utilizador.id}">Mais info</a></td>
+                <td>${despesa.id}</td>
+                <td>${despesa.categoria}</td>
+                <td>${despesa.descricao}</td>
+                <td>${despesa.localizacao}</td>
+                <td><a href="/info/${despesa.id}">Mais info</a></td>
             </tr>
         </c:forEach>
     </table>
@@ -28,7 +30,7 @@
     </c:otherwise>
 </c:choose>
 <p>
-  <a href="/form">Inserir novo utilizador</a>
+  <a href="/form">Inserir nova despesa</a>
 </p>
 </body>
 </html>

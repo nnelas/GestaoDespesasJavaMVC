@@ -5,11 +5,13 @@
 </head>
 <body>
 
-<h1>Utilizador ${utilizador.id}</h1>
-<p>Nome: ${utilizador.name}</p>
-<p>Morada: ${utilizador.address}</p>
-<a href="/edit/${utilizador.id}">Editar</a>
-<form action="/delete/${utilizador.id}" method="post">
+<h1>Id da despesa: ${despesa.id}</h1>
+<p>Categoria: ${despesa.categoria}</p>
+<p>Data: ${despesa.data}</p>
+<p>Descrição: ${despesa.descricao}</p>
+<p>Localização: ${despesa.localizacao}</p>
+<a href="/edit/${despesa.id}">Editar</a>
+<form action="/delete/${despesa.id}" method="post">
     <input type="submit" value="Apagar" />
 </form>
 </body>
