@@ -2,9 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <title>Lista de despesas</title>
 </head>
 <body>
+<br>
+<div class="container">
 <fieldset>
     <legend>Lista de despesas</legend>
 
@@ -42,6 +46,7 @@
         </tr>
     </table>
 </fieldset>
+</div>
 </body>
 </html>
 

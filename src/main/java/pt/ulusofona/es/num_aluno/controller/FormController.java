@@ -118,7 +118,7 @@ public class FormController {
     }
 
     @RequestMapping(value = "/mapa", method = RequestMethod.GET)
-    public String getMap(ModelMap model, @PathVariable("id") Long id){
+    public String getMap(ModelMap model){
         return "mapa";
     }
 }

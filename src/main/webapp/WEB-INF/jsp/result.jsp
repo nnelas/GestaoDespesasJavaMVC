@@ -1,10 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <title></title>
 </head>
 <body>
-<fieldset>
+<br>
+<div class="container">
+<fieldset style="width: 80%">
     <legend>Informação</legend>
     <p>${message}</p>
     <br><br><br>
@@ -19,5 +23,6 @@
         </tr>
     </table>
 </fieldset>
+</div>
 </body>
 </html>

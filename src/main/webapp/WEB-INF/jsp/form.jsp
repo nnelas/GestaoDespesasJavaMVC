@@ -1,19 +1,13 @@
-﻿
+﻿﻿
 ﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <title>Despesas</title>
     <style>
         .error {
             color: red; font-weight: bold;
-        }
-        .errorblock {
-            color: #000;
-            background-color: #ffEEEE;
-            border: 3px solid #ff0000;
-            padding: 8px;
-            margin: 16px;
         }
     </style>
     <script type="text/javascript">
@@ -44,8 +38,8 @@
     </script>
 </head>
 <body>
+<div class="container">
 <form:form method="POST" modelAttribute="despesaForm" action="/form">
-    <form:errors path="*" cssClass="errorblock" element="div" />
     <fieldset>
         <legend>Registar despesas</legend>
         <table>
@@ -73,13 +67,16 @@
         <form:errors path="categoria" cssClass="error"/><br/>
 
         <form:label path="data">Data: *</form:label><br/>
-        <form:input type="date" id="date" path="data" label="Data" /> <input type="checkbox" id="checkDate" onclick="dataSistema()"/> utilizar data do sistema<br/><br/>
+        <form:input type="date" id="date" path="data" label="Data" /> <input type="checkbox" id="checkDate" onclick="dataSistema()"/> utilizar data do sistema<br/>
+        <form:errors path="data" cssClass="error"/><br/>
 
         <form:label path="descricao">Descrição: *</form:label><br/>
-        <form:input type="text" path="descricao" label="Descricao" style="width:100%" placeholder="Pequena descrição da despesa (até 160 caracteres)"/><br/><br/>
+        <form:input type="text" path="descricao" label="Descricao" style="width:100%" placeholder="Pequena descrição da despesa (até 160 caracteres)"/><br/>
+        <form:errors path="descricao" cssClass="error"/><br/>
 
         <form:label path="valor">Valor (em €): *</form:label><br/>
-        <form:input path="valor" label="Valor" style="width:100%" placeholder="Valor da despesa incluindo cêntimos (ex: 30.25 euros)"/><br/><br/>
+        <form:input path="valor" label="Valor" style="width:100%" placeholder="Valor da despesa incluindo cêntimos (ex: 30.25 euros)"/><br/>
+        <form:errors path="valor" cssClass="error"/><br/>
 
         <form:label path="localizacao">Localização: (opcional)</form:label><br/>
         <form:input type="text" path="localizacao" style="width:100%" label="Localizacao" placeholder="Local onde foi realizada a despesa (ex: Restaurante Portugália na Av. Almirante de Reis)"/><br/><br/>
@@ -87,8 +84,8 @@
         <table>
             <tr>
                 <td><a href="/home.jsp"><input type="button" value="Voltar" /></a></td>
-                <td><input type="reset" name="Repor"/></td>
-                <td><input type="submit" name="Gravar"/></td>
+                <td><input type="reset" name="Repor" /></td>
+                <td><input type="submit" name="Gravar" /></td>
             </tr>
         </table>
         <br><br>
@@ -97,6 +94,7 @@
         </div>
     </fieldset>
 </form:form>
+</div>
 </body>
 </html>
 
