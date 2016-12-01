@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -29,7 +28,7 @@ public class Despesa implements Serializable {
     @Column(nullable = false)
     private Float valor;
 
-    @Column (nullable = true)
+    @Column
     private String localizacao;
 
     public long getId() {

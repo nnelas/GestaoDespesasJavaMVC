@@ -30,15 +30,15 @@
     <!-- orm part -->
 
     <!-- use embedded derby database -->
-    <jdbc:embedded-database id="dataSource" type="DERBY"/>
+    <!--<jdbc:embedded-database id="dataSource" type="DERBY"/>-->
 
     <!-- use real mysql database -->
-    <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
-        <!--<property name="driverClassName" value="com.mysql.jdbc.Driver" />-->
-        <!--<property name="url" value="jdbc:mysql://localhost:3306/apontamentos" />-->
-        <!--<property name="username" value="root" />-->
-        <!--<property name="password" value="password" />-->
-    <!--</bean>-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/despesas" />
+        <property name="username" value="despesasUser" />
+        <property name="password" value="xpto1234" />
+    </bean>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
@@ -59,8 +59,8 @@
         <property name="jpaProperties">
             <props>
                 <prop key="hibernate.dialect">
-                    org.hibernate.dialect.DerbyTenSevenDialect   <!-- use this for derby -->
-               <!--     org.hibernate.dialect.MySQL5Dialect      -->   <!-- use this for mysql -->
+               <!--     org.hibernate.dialect.DerbyTenSevenDialect -->  <!-- use this for derby -->
+                        org.hibernate.dialect.MySQL5Dialect         <!-- use this for mysql -->
                 </prop>
                 <prop key="hibernate.max_fetch_depth">3</prop>
                 <prop key="hibernate.jdbc.fetch_size">50</prop>

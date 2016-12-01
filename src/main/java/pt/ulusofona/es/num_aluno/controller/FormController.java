@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.apache.commons.lang.StringUtils;
 import pt.ulusofona.es.num_aluno.data.Despesa;
 import pt.ulusofona.es.num_aluno.form.DespesaForm;
 
@@ -15,6 +16,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+import java.lang.Object;
 
 @Controller
 @Transactional
@@ -54,7 +56,8 @@ public class FormController {
             despesa = new Despesa();
         }
 
-        despesa.setCategoria(despesaForm.getCategoria());
+        String despesaCategoria = StringUtils.stripEnd(despesaForm.getCategoria(), ",");
+        despesa.setCategoria(despesaCategoria);
         despesa.setData(despesaForm.getData());
         despesa.setDescricao(despesaForm.getDescricao());
         despesa.setValor(despesaForm.getValor());
