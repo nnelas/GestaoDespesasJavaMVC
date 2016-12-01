@@ -14,20 +14,24 @@
 
     <c:choose>
         <c:when test="${not empty despesas}">
-                <table border="1">
-                    <tr>
-                        <th>Data</th>
-                        <th>Categoria</th>
-                        <th>Valor</th>
-                    </tr>
-                    <c:forEach var="despesa" items="${despesas}">
+                <table class="table table-hover">
+                    <thead>
                         <tr>
-                            <td>${despesa.data}</td>
-                            <td>${despesa.categoria}</td>
-                            <td>${despesa.valor}€</td>
-                            <td><a href="/info/${despesa.id}">Ver detalhe</a></td>
+                            <th>Data</th>
+                            <th>Categoria</th>
+                            <th>Valor</th>
                         </tr>
-                    </c:forEach>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="despesa" items="${despesas}">
+                            <tr>
+                                <td>${despesa.data}</td>
+                                <td>${despesa.categoria}</td>
+                                <td>${despesa.valor}€</td>
+                                <td><a href="/info/${despesa.id}">Ver detalhe</a></td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
                 </table>
             </c:when>
         <c:otherwise>

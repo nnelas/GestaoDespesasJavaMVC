@@ -19,28 +19,31 @@
 
     <c:choose>
         <c:when test="${not empty despesasMapa}">
-            <table border="1">
-                <tr>
-                    <th>Mês</th>
-                    <th>Transportes</th>
-                    <th>Alimentação</th>
-                    <th>Propinas</th>
-                    <th>Renda</th>
-                    <th>Total</th>
-                    <th>Variação</th>
-                </tr>
-                <c:forEach var="despesasMapa" items="${despesasMapa}">
+            <table class="table table-hover">
+                <thead>
                     <tr>
-                        <td>${despesa.data}</td>
-                        <td>${despesa.categoria}</td>
-                        <td>${despesa.categoria}</td>
-                        <td>${despesa.categoria}</td>
-                        <td>${despesa.categoria}</td>
-                        <td>${despesa.valor}</td>
-                        <td>${despesa.valor}</td>
-
+                        <th>Mês</th>
+                        <th>Transportes</th>
+                        <th>Alimentação</th>
+                        <th>Propinas</th>
+                        <th>Renda</th>
+                        <th>Total</th>
+                        <th>Variação</th>
                     </tr>
-                </c:forEach>
+                </thead>
+                <tbody>
+                    <c:forEach var="despesasMapa" items="${despesasMapa}">
+                        <tr>
+                            <th scope="row">${despesa.data}</th>
+                            <td>${despesa.categoria}</td>
+                            <td>${despesa.categoria}</td>
+                            <td>${despesa.categoria}</td>
+                            <td>${despesa.categoria}</td>
+                            <td>${despesa.valor}</td>
+                            <td>${despesa.valor}</td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
             </table>
         </c:when>
         <c:otherwise>
