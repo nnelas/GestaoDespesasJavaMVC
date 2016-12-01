@@ -11,23 +11,34 @@
 <fieldset>
     <legend>Informação da despesa com o ID: ${despesa.id}</legend>
 
-    <p>Categoria: ${despesa.categoria}</p>
-    <p>Data: ${despesa.data}</p>
-    <p>Descrição: ${despesa.descricao}</p>
-    <p>Valor: ${despesa.valor}€</p>
-    <p>Localização: ${despesa.localizacao}</p>
-    <br><br>
-    <table>
-        <tr>
-            <td><form action="/list" method="get">
-                <input type="submit" value="Voltar" /></form></td>
-            <td><form action="/edit/${despesa.id}" method="get">
-                <input type="submit" value="Editar" /></form></td>
-            <td><form action="/delete/${despesa.id}" method="post">
-                <input type="submit" value="Apagar" /></form></td>
-        </tr>
-    </table>
+    <dl class="row">
+        <dt class="col-sm-3">Categoria: </dt>
+        <dd class="col-sm-9">${despesa.categoria}</dd>
 
+        <dt class="col-sm-3">Data: </dt>
+        <dd class="col-sm-9">${despesa.data}</dd>
+
+        <dt class="col-sm-3">Descrição:</dt>
+        <dd class="col-sm-9">${despesa.descricao}</dd>
+
+        <dt class="col-sm-3">Valor:</dt>
+        <dd class="col-sm-9">${despesa.valor}€</dd>
+
+        <dt class="col-sm-3">Localização:</dt>
+        <dd class="col-sm-9">${despesa.localizacao}</dd>
+    </dl>
+        <br><br>
+
+        <table>
+            <tr>
+                <td><form action="/list" method="get">
+                    <input type="submit" value="Voltar" /></form></td>
+                <td><form action="/edit/${despesa.id}" method="get">
+                    <input type="submit" value="Editar" /></form></td>
+                <td><form action="/delete/${despesa.id}" method="post">
+                    <input type="submit" value="Apagar" /></form></td>
+            </tr>
+        </table>
 </fieldset>
 </div>
 </body>
