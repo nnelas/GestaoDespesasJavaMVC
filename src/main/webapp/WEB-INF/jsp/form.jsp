@@ -62,7 +62,7 @@
             </tr>
             <tr>
                 <td></td>
-                <td><input type="radio" name="categoria" value="" onclick="show()"/> Outra <input type="text" id="outra" name="categoria" style="display: none;"></td>
+                <td><input type="radio" name="categoria" value="" onclick="show()"/> Outra <input type="text" id="outra" name="categoriaOutra" style="display: none;"></td>
             </tr>
         </table>
         <form:errors path="categoria" cssClass="error"/><br/>

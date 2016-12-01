@@ -26,7 +26,7 @@ public class FormController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String getList(ModelMap model) {
 
-        List<Despesa> despesas = em.createQuery("select d from Despesa d order by d.data ASC", Despesa.class).getResultList();
+        List<Despesa> despesas = em.createQuery("select d from Despesa d order by d.data DESC ", Despesa.class).getResultList();
         model.put("despesas", despesas);
         return "list";
     }
