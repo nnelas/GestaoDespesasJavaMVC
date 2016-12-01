@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.validation.Valid;
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
@@ -26,7 +27,7 @@ public class FormController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String getList(ModelMap model) {
 
-        List<Despesa> despesas = em.createQuery("select d from Despesa d", Despesa.class).getResultList();
+        List<Despesa> despesas = em.createQuery("select d from Despesa d order by d.data ASC", Despesa.class).getResultList();
         model.put("despesas", despesas);
         return "list";
     }
@@ -111,10 +112,21 @@ public class FormController {
 
             model.addAttribute("message", "Sucesso! A despesa de " + despesa.getCategoria() + " no dia " + despesa.getData() + " foi eliminada");
         } else {
-            model.addAttribute("message", "Não pode remover despesas de meses anteriores");
+            model.addAttribute("message", "Não pode remover despesas de meses anteriores.");
         }
 
         return "result";
+    }
+
+    @RequestMapping(value = "/mapa", method = RequestMethod.GET)
+    public String getMap(ModelMap model){
+
+        List<Despesa> despesas = em.createQuery("select d.data, d.categoria " +
+                                                "from Despesa d " +
+                                                "group by d.data, d.categoria " +
+                                                "order by d.data", Despesa.class).getResultList();
+        model.put("despesasMapa", despesas);
+        return "mapa";
     }
 }
 

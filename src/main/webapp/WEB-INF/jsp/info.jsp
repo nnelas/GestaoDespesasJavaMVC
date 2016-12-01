@@ -15,12 +15,12 @@
     <br><br>
     <table>
         <tr>
+            <td><form action="/list" method="get">
+                <input type="submit" value="Voltar" /></form></td>
             <td><form action="/edit/${despesa.id}" method="get">
                 <input type="submit" value="Editar" /></form></td>
             <td><form action="/delete/${despesa.id}" method="post">
                 <input type="submit" value="Apagar" /></form></td>
-            <td><form action="/list" method="get">
-                <input type="submit" value="Voltar" /></form></td>
         </tr>
     </table>
 

@@ -35,10 +35,10 @@
 
     <table>
         <tr>
+            <td><form action="/home.jsp" method="get">
+                <input type="submit" value="Voltar" /></form></td>
             <td><form action="/form" method="get">
                 <input type="submit" value="Inserir nova despesa" /></form></td>
-            <td><form action="/home.jsp" method="get">
-                <input type="submit" value="Voltar ao início" /></form></td>
         </tr>
     </table>
 </fieldset>

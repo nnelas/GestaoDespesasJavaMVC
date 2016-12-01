@@ -18,7 +18,7 @@
 
         <form action="/list" method="get"><input type="submit" value="Consultar despesas" /></form><br>
 
-        <form action="/form" method="get"><input type="submit" value="Mapa mensal de despesas" /></form><br><br>
+        <form action="/mapa" method="get"><input type="submit" value="Mapa mensal de despesas" /></form><br><br>
 
         <br><br><br><br>
 
