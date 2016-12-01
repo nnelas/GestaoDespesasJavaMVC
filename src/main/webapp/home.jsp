@@ -14,20 +14,24 @@
     <fieldset>
         <legend>Página de Entrada</legend>
 
-        <a href="/form">Registar Despesas</a><br><br>
-        <a href="/list">Lista de depesas</a><br><br>
-        <a href="#">Mapa mensal de despesas</a><br><br>
+        <form action="/form" method="get"><input type="submit" value="Registar despesas" /></form><br>
+
+        <form action="/list" method="get"><input type="submit" value="Consultar despesas" /></form><br>
+
+        <form action="/form" method="get"><input type="submit" value="Mapa mensal de despesas" /></form><br><br>
 
         <br><br><br><br>
 
         <p>Despesas, Fase 1</p>
         <p>Projecto prático de Engenharia de Software</p>
+        <p>Grupo 5</p>
 
         <br><br>
-
+        <div align="right">
         <p>Jorge Loureiro</p>
         <p>Nuno Coelho</p>
         <p>Nuno Nelas</p>
+        </div>
     </fieldset>
 </body>
 </html>

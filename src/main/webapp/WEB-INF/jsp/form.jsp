@@ -66,7 +66,9 @@
             </tr>
         </table>
         <br><br>
+        <div align="right">
         * campos obrigatórios.
+        </div>
     </fieldset>
     </form:form>
 </body>

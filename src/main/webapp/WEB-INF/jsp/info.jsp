@@ -12,7 +12,7 @@
     <p>Descrição: ${despesa.descricao}</p>
     <p>Valor: ${despesa.valor}</p>
     <p>Localização: ${despesa.localizacao}</p>
-
+    <br><br>
     <table>
         <tr>
             <td><form action="/edit/${despesa.id}" method="get">
@@ -23,6 +23,7 @@
                 <input type="submit" value="Voltar" /></form></td>
         </tr>
     </table>
+
 </fieldset>
 </body>
 </html>
