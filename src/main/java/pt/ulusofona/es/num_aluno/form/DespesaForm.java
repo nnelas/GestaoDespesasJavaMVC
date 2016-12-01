@@ -12,17 +12,17 @@ public class DespesaForm {
 
     private Long id;
 
-    @NotEmpty(message = "Tem que inserir a categoria de despesa.")
+    @NotEmpty(message = "- Tem que inserir a categoria de despesa.")
     private String categoria;
 
-    @NotEmpty(message = "Tem que inserir a data de despesa.")
+    @NotEmpty(message = "- Tem que inserir a data de despesa.")
     private String data;
 
-    @NotEmpty(message = "Tem que inserir a descrição da despesa.")
-    @Size(max=160, message = "A despesa só pode conter até 160 caracteres.")
+    @NotEmpty(message = "- Tem que inserir a descrição da despesa.")
+    @Size(max=160, message = "- A despesa só pode conter até 160 caracteres.")
     private String descricao;
 
-    @NotNull(message = "Tem que inserir o valor da despesa.")
+    @NotNull(message = "- Tem que inserir o valor da despesa.")
     private Float valor;
 
     private String localizacao;
