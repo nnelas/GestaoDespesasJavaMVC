@@ -20,7 +20,7 @@
                         <tr>
                             <td>${despesa.data}</td>
                             <td>${despesa.categoria}</td>
-                            <td>${despesa.valor}</td>
+                            <td>${despesa.valor}€</td>
                             <td><a href="/info/${despesa.id}">Ver detalhe</a></td>
                         </tr>
                     </c:forEach>
