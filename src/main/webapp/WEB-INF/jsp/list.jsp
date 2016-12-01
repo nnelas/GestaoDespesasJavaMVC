@@ -5,31 +5,43 @@
     <title>Lista de despesas</title>
 </head>
 <body>
-<c:choose>
-    <c:when test="${not empty despesas}">
-    <table border="1">
+<fieldset>
+    <legend>Lista de despesas</legend>
+
+    <c:choose>
+        <c:when test="${not empty despesas}">
+                <table border="1">
+                    <tr>
+                        <th>Data</th>
+                        <th>Categoria</th>
+                        <th>Valor</th>
+                    </tr>
+                    <c:forEach var="despesa" items="${despesas}">
+                        <tr>
+                            <td>${despesa.data}</td>
+                            <td>${despesa.categoria}</td>
+                            <td>${despesa.valor}</td>
+                            <td><a href="/info/${despesa.id}">Ver detalhe</a></td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </c:when>
+        <c:otherwise>
+            <p>Não tem despesas.</p>
+        </c:otherwise>
+    </c:choose>
+
+    <br><br>
+
+    <table>
         <tr>
-            <th>Data</th>
-            <th>Categoria</th>
-            <th>Valor</th>
+            <td><form action="/form" method="get">
+                <input type="submit" value="Inserir nova despesa" /></form></td>
+            <td><form action="/home.jsp" method="get">
+                <input type="submit" value="Voltar ao início" /></form></td>
         </tr>
-        <c:forEach var="despesa" items="${despesas}">
-            <tr>
-                <td>${despesa.data}</td>
-                <td>${despesa.categoria}</td>
-                <td>${despesa.valor}</td>
-                <td><a href="/info/${despesa.id}">Mais info</a></td>
-            </tr>
-        </c:forEach>
     </table>
-    </c:when>
-    <c:otherwise>
-        <p>Não tem resultados</p>
-    </c:otherwise>
-</c:choose>
-<p>
-  <a href="/form">Inserir nova despesa</a>
-</p>
+</fieldset>
 </body>
 </html>
 

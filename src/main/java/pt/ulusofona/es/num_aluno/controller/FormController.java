@@ -2,7 +2,6 @@ package pt.ulusofona.es.num_aluno.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +11,9 @@ import pt.ulusofona.es.num_aluno.form.DespesaForm;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.validation.Valid;
-import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -61,7 +62,7 @@ public class FormController {
         em.persist(despesa);
 
         model.addAttribute("message", "Sucesso! A despesa de " + despesa.getCategoria() + " no dia " + despesa.getData() +
-                " foi gravada na BD e foi-lhe atribuído o id " + despesa.getId());
+                " foi gravada na BD e foi-lhe atribuído o ID " + despesa.getId());
         return "result";
     }
 
@@ -95,9 +96,24 @@ public class FormController {
     public String delete(ModelMap model, @PathVariable("id") Long id) {
 
         Despesa despesa = em.find(Despesa.class, id);
-        em.remove(despesa);
 
-        model.addAttribute("message", "Sucesso! A despesa de " + despesa.getCategoria() + " no dia " + despesa.getData() + " foi eliminada");
+        String data1 = despesa.getData();
+        String[] parts = data1.split("-");
+        int month1 = Integer.parseInt(parts[1]);
+
+        Date date = new Date();
+        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        int month2 = localDate.getMonthValue();
+
+
+        if(month1 == month2){
+            em.remove(despesa);
+
+            model.addAttribute("message", "Sucesso! A despesa de " + despesa.getCategoria() + " no dia " + despesa.getData() + " foi eliminada");
+        } else {
+            model.addAttribute("message", "Não pode remover despesas de meses anteriores");
+        }
+
         return "result";
     }
 }

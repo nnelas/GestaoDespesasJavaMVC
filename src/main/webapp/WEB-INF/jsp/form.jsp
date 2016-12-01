@@ -8,7 +8,10 @@
             color: red; font-weight: bold;
         }
     </style>
-
+    <script type="text/javascript">
+        function show() { document.getElementById('outros').style.display = 'block'; }
+        function hide() { document.getElementById('outros').style.display = 'none'; }
+    </script>
 </head>
 <body>
     <form:form method="POST" modelAttribute="despesaForm" action="/form">
@@ -17,13 +20,28 @@
 
         <form:hidden path="id"/>
 
-        Categoria: *<br/>
-        <select name="categoria">
-            <option value="Transportes">Transportes</option>
-            <option value="Alimentação">Alimentação</option>
-            <option value="Propinas">Propinas</option>
-            <option value="Renda">Renda</option>
-        </select><br/><br/>
+        <table>
+            <tr>
+                <td></td>
+                <td><input type="radio" name="categoria" value="Transportes" onclick="hide();"/> Transportes</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="radio" name="categoria" value="Alimentação" onclick="hide();"/> Alimentação</td>
+            </tr>
+            <tr>
+                <td>Categoria: *</td>
+                <td><input type="radio" name="categoria" value="Propinas" onclick="hide();"/> Propinas</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="radio" name="categoria" value="Renda" onclick="hide();"/> Renda</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="radio" name="categoria" value="Outros" onclick="show();"/> Outros <input type="text" id="outros" name="categoria" style="display: none;"></td>
+            </tr>
+        </table>
 
         <form:label path="data">Data: *</form:label><br/>
         <form:input type="date" path="data" label="Data" /><br/>
@@ -41,7 +59,12 @@
         <form:label path="localizacao">Localização: </form:label><br/>
         <form:input type="text" path="localizacao" label="Localizacao" /><br/><br/>
         <br/>
-        <input type="submit" name="Gravar"/>
+        <table>
+            <tr>
+                <td><input type="submit" name="Gravar"/></td>
+                <td><a href="/home.jsp"><input type="button" value="Voltar" /></a></td>
+            </tr>
+        </table>
         <br><br>
         * campos obrigatórios.
     </fieldset>

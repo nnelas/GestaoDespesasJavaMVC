@@ -4,16 +4,25 @@
     <title>Informação</title>
 </head>
 <body>
+<fieldset>
+    <legend>Informação da despesa com o ID: ${despesa.id}</legend>
 
-<h1>Id da despesa: ${despesa.id}</h1>
-<p>Categoria: ${despesa.categoria}</p>
-<p>Data: ${despesa.data}</p>
-<p>Descrição: ${despesa.descricao}</p>
-<p>Valor: ${despesa.valor}</p>
-<p>Localização: ${despesa.localizacao}</p>
-<a href="/edit/${despesa.id}">Editar</a>
-<form action="/delete/${despesa.id}" method="post">
-    <input type="submit" value="Apagar" />
-</form>
+    <p>Categoria: ${despesa.categoria}</p>
+    <p>Data: ${despesa.data}</p>
+    <p>Descrição: ${despesa.descricao}</p>
+    <p>Valor: ${despesa.valor}</p>
+    <p>Localização: ${despesa.localizacao}</p>
+
+    <table>
+        <tr>
+            <td><form action="/edit/${despesa.id}" method="get">
+                <input type="submit" value="Editar" /></form></td>
+            <td><form action="/delete/${despesa.id}" method="post">
+                <input type="submit" value="Apagar" /></form></td>
+            <td><form action="/list" method="get">
+                <input type="submit" value="Voltar" /></form></td>
+        </tr>
+    </table>
+</fieldset>
 </body>
 </html>
