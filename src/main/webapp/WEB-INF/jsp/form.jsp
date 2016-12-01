@@ -40,6 +40,7 @@
             } else {
                 document.getElementById('date').value = "";
             }
+
         }
     </script>
 </head>
@@ -70,6 +71,7 @@
                 <td><form:radiobutton path="categoria" value="" onclick="show()"/> Outra <form:input path="categoria" id="outra" style="display: none;"/></td>
             </tr>
         </table>
+        <form:errors path="categoria" cssClass="error"/><br/>
 
         <form:label path="data">Data: *</form:label><br/>
         <form:input type="date" id="date" path="data" label="Data" /> <input type="checkbox" id="checkDate" onclick="dataSistema()"/> utilizar data do sistema<br/><br/>
