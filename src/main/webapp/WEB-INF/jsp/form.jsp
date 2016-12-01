@@ -16,7 +16,7 @@
             if (document.getElementById('checkDate').checked) {
                 var today = new Date();
                 var dd = today.getDate();
-                var mm = today.getMonth() + 1; //January is 0!
+                var mm = today.getMonth() + 1;
                 var yyyy = today.getFullYear();
 
                 if (dd < 10) {
@@ -72,16 +72,16 @@
         <form:errors path="data" cssClass="error"/><br/>
 
         <form:label path="descricao">Descrição: *</form:label><br/>
-        <form:input type="text" path="descricao" label="Descricao" /><br/>
+        <form:input type="text" path="descricao" label="Descricao" style="width:100%" placeholder="Pequena descrição da despesa (até 160 caracteres)"/><br/>
         <form:errors path="descricao" cssClass="error"/>
         <br/>
 
-        <form:label path="valor">Valor: *</form:label><br/>
-        <form:input path="valor" label="Valor" /><br/>
+        <form:label path="valor">Valor (em €): *</form:label><br/>
+        <form:input path="valor" label="Valor" style="width:100%" placeholder="Valor da despesa incluindo cêntimos (ex: 30.25 euros)"/><br/>
         <form:errors path="valor" cssClass="error"/><br/>
 
-        <form:label path="localizacao">Localização: </form:label><br/>
-        <form:input type="text" path="localizacao" label="Localizacao" /><br/><br/>
+        <form:label path="localizacao">Localização: (opcional)</form:label><br/>
+        <form:input type="text" path="localizacao" style="width:100%" label="Localizacao" placeholder="Local onde foi realizada a despesa (ex: Restaurante Portugália na Av. Almirante de Reis)"/><br/><br/>
         <br/>
         <table>
             <tr>

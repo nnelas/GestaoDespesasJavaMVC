@@ -10,7 +10,7 @@
     <p>Categoria: ${despesa.categoria}</p>
     <p>Data: ${despesa.data}</p>
     <p>Descrição: ${despesa.descricao}</p>
-    <p>Valor: ${despesa.valor}</p>
+    <p>Valor: ${despesa.valor}€</p>
     <p>Localização: ${despesa.localizacao}</p>
     <br><br>
     <table>

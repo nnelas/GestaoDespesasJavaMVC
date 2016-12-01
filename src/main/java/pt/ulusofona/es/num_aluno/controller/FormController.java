@@ -12,7 +12,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.validation.Valid;
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
@@ -119,13 +118,7 @@ public class FormController {
     }
 
     @RequestMapping(value = "/mapa", method = RequestMethod.GET)
-    public String getMap(ModelMap model){
-
-        List<Despesa> despesas = em.createQuery("select d.data, d.categoria " +
-                                                "from Despesa d " +
-                                                "group by d.data, d.categoria " +
-                                                "order by d.data", Despesa.class).getResultList();
-        model.put("despesasMapa", despesas);
+    public String getMap(ModelMap model, @PathVariable("id") Long id){
         return "mapa";
     }
 }
