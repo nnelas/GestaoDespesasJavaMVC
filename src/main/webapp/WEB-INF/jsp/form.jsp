@@ -32,7 +32,6 @@
             } else {
                 document.getElementById('date').value = "";
             }
-
         }
     </script>
 </head>
