@@ -56,7 +56,7 @@ public class FormController {
             despesa = new Despesa();
         }
 
-        String despesaCategoria = StringUtils.stripEnd(despesaForm.getCategoria(), ",");
+        String despesaCategoria = StringUtils.strip(despesaForm.getCategoria(), ",");
         despesa.setCategoria(despesaCategoria);
         despesa.setData(despesaForm.getData());
         despesa.setDescricao(despesaForm.getDescricao());
