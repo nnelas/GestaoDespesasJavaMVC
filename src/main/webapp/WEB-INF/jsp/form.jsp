@@ -35,6 +35,17 @@
                 document.getElementById('date').value = "";
             }
         }
+
+        function textCounter( field, countfield, maxlimit ) {
+            if ( field.value.length > maxlimit ) {
+                field.value = field.value.substring( 0, maxlimit );
+                field.blur();
+                field.focus();
+                return false;
+            } else {
+                countfield.value = maxlimit - field.value.length;
+            }
+        }
     </script>
 </head>
 <body>
@@ -70,8 +81,8 @@
         <form:input type="date" id="date" path="data" label="Data" /> <input type="checkbox" id="checkDate" onclick="dataSistema()"/> utilizar data do sistema<br/>
         <form:errors path="data" cssClass="error"/><br/>
 
-        <form:label path="descricao">Descrição: *</form:label><br/>
-        <form:input type="text" path="descricao" label="Descricao" style="width:100%" placeholder="Pequena descrição da despesa (até 160 caracteres)"/><br/>
+        <form:label path="descricao">Descrição: *</form:label><br/><input onblur="textCounter(this.form.recipients,this,160);" disabled  onfocus="this.blur();" tabindex="999" maxlength="3" size="3" value="160" name="counter"><small> Caracteres restantes</small>
+        <form:input type="text" name="message" path="descricao" label="Descricao" style="width:100%" placeholder="Pequena descrição da despesa (até 160 caracteres)" onblur="textCounter(this,this.form.counter,160);" onkeyup="textCounter(this,this.form.counter,160);"/><br/>
         <form:errors path="descricao" cssClass="error"/><br/>
 
         <form:label path="valor">Valor (em €): *</form:label><br/>
