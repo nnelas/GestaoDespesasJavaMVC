@@ -36,7 +36,7 @@
                         <td>${janAlimentacao}</td>
                         <td>${janPropinas}</td>
                         <td>${janRenda}</td>
-                        <td>janTotal</td>
+                        <td>${janTotal}</td>
                         <td>janVariacao</td>
                     </tr>
                     <tr>
@@ -45,7 +45,7 @@
                         <td>${fevAlimentacao}</td>
                         <td>${fevPropinas}</td>
                         <td>${fevRenda}</td>
-                        <td>fevTotal</td>
+                        <td>${fevTotal}</td>
                         <td>fevVariacao</td>
                     </tr>
                     <tr>
@@ -54,7 +54,7 @@
                         <td>${marAlimentacao}</td>
                         <td>${marPropinas}</td>
                         <td>${marRenda}</td>
-                        <td>março.total</td>
+                        <td>${marTotal}</td>
                         <td>março.variação</td>
                     </tr>
                     <tr>

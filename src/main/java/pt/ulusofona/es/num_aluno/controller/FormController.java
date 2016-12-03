@@ -2,7 +2,6 @@ package pt.ulusofona.es.num_aluno.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +26,7 @@ public class FormController {
     private EntityManager em;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String getHome(ModelMap model) {
+    public String getHome() {
         return "home";
     }
 
@@ -130,19 +129,16 @@ public class FormController {
     public String getMap(ModelMap model){
 
         long id=1;
-        float janTransportes, janAlimentacao, janPropinas, janRenda;
-        janTransportes = janAlimentacao = janPropinas = janRenda = 0f;
-        float fevTransportes, fevAlimentacao, fevPropinas, fevRenda;
-        fevTransportes = fevAlimentacao = fevPropinas = fevRenda = 0f;
-        float marTransportes, marAlimentacao, marPropinas, marRenda;
-        marTransportes = marAlimentacao = marPropinas = marRenda = 0f;
+        float janTransportes = 0, janAlimentacao = 0, janPropinas = 0, janRenda = 0;
+        float fevTransportes = 0, fevAlimentacao = 0, fevPropinas = 0, fevRenda = 0;
+        float marTransportes = 0, marAlimentacao = 0, marPropinas = 0, marRenda = 0;
 
         for (int i=0; i<id; i++) {
 
             Despesa despesa = em.find(Despesa.class, id);
 
-            String data1 = despesa.getData();
-            String[] parts = data1.split("-");
+            String data = despesa.getData();
+            String[] parts = data.split("-");
             int month = Integer.parseInt(parts[1]);
 
             if (month == 1) {
@@ -151,13 +147,15 @@ public class FormController {
                     model.addAttribute("janTransportes", janTransportes);
                 } else if (Objects.equals(despesa.getCategoria(), "Alimentação")) {
                     janAlimentacao =+ despesa.getValor();
-                    model.addAttribute("janAlimentação", janAlimentacao);
+                    model.addAttribute("janAlimentacao", janAlimentacao);
                 } else if (Objects.equals(despesa.getCategoria(), "Propinas")) {
                     janPropinas =+ despesa.getValor();
                     model.addAttribute("janPropinas", janPropinas);
                 } else if (Objects.equals(despesa.getCategoria(), "Renda")) {
                     janRenda =+ despesa.getValor();
                     model.addAttribute("janRenda", janRenda);
+                } else {
+                    model.addAttribute("janTotal", janTransportes + janAlimentacao + janPropinas + janRenda);
                 }
             }
             if (month == 2) {
@@ -166,13 +164,15 @@ public class FormController {
                     model.addAttribute("fevTransportes", fevTransportes);
                 } else if (Objects.equals(despesa.getCategoria(), "Alimentação")) {
                     fevAlimentacao =+ despesa.getValor();
-                    model.addAttribute("fevAlimentação", fevAlimentacao);
+                    model.addAttribute("fevAlimentacao", fevAlimentacao);
                 } else if (Objects.equals(despesa.getCategoria(), "Propinas")) {
                     fevPropinas =+ despesa.getValor();
                     model.addAttribute("fevPropinas", fevPropinas);
                 } else if (Objects.equals(despesa.getCategoria(), "Renda")) {
                     fevRenda =+ despesa.getValor();
                     model.addAttribute("fevRenda", fevRenda);
+                } else {
+                    model.addAttribute("fevTotal", fevTransportes + fevAlimentacao + fevPropinas + fevRenda);
                 }
             }
             if (month == 3) {
@@ -181,17 +181,17 @@ public class FormController {
                     model.addAttribute("marTransportes", marTransportes);
                 } else if (Objects.equals(despesa.getCategoria(), "Alimentação")) {
                     marAlimentacao =+ despesa.getValor();
-                    model.addAttribute("marAlimentação", marAlimentacao);
+                    model.addAttribute("marAlimentacao", marAlimentacao);
                 } else if (Objects.equals(despesa.getCategoria(), "Propinas")) {
                     marPropinas =+ despesa.getValor();
                     model.addAttribute("marPropinas", marPropinas);
                 } else if (Objects.equals(despesa.getCategoria(), "Renda")) {
                     marRenda =+ despesa.getValor();
                     model.addAttribute("marRenda", marRenda);
+                } else {
+                    model.addAttribute("marTotal", marTransportes + marAlimentacao + marPropinas + marRenda);
                 }
             }
-
-
             id++;
         }
 
