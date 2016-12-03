@@ -32,28 +32,28 @@
                 <tbody>
                     <tr>
                         <th scope="row">Janeiro</th>
-                        <td>janeiro.transportes</td>
-                        <td>janeiro.alimentação</td>
-                        <td>janeiro.propinas</td>
-                        <td>janeiro.renda</td>
-                        <td>janeiro.total</td>
-                        <td>janeiro.variação</td>
+                        <td>${janTransportes}</td>
+                        <td>${janAlimentacao}</td>
+                        <td>${janPropinas}</td>
+                        <td>${janRenda}</td>
+                        <td>janTotal</td>
+                        <td>janVariacao</td>
                     </tr>
                     <tr>
                         <th scope="row">Fevereiro</th>
-                        <td>fevereiro.transportes</td>
-                        <td>fevereiro.alimentação</td>
-                        <td>fevereiro.propinas</td>
-                        <td>fevereiro.renda</td>
-                        <td>fevereiro.total</td>
-                        <td>fevereiro.variação</td>
+                        <td>${fevTransportes}</td>
+                        <td>${fevAlimentacao}</td>
+                        <td>${fevPropinas}</td>
+                        <td>${fevRenda}</td>
+                        <td>fevTotal</td>
+                        <td>fevVariacao</td>
                     </tr>
                     <tr>
                         <th scope="row">Março</th>
-                        <td>março.transportes</td>
-                        <td>março.alimentação</td>
-                        <td>março.propinas</td>
-                        <td>março.renda</td>
+                        <td>${marTransportes}</td>
+                        <td>${marAlimentacao}</td>
+                        <td>${marPropinas}</td>
+                        <td>${marRenda}</td>
                         <td>março.total</td>
                         <td>março.variação</td>
                     </tr>
@@ -144,7 +144,7 @@
 
     <table>
         <tr>
-            <td><form action="/home.jsp" method="get">
+            <td><form action="/" method="get">
                 <input type="submit" value="Voltar" /></form></td>
             <td><form action="/form" method="get">
                 <input type="submit" value="Inserir nova despesa" /></form></td>

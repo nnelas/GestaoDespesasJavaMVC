@@ -14,7 +14,7 @@
     <br><br><br>
     <table>
         <tr>
-            <td><form action="/home.jsp" method="get">
+            <td><form action="/" method="get">
                 <input type="submit" value="Voltar ao início" /></form></td>
             <td><form action="/list" method="get">
                 <input type="submit" value="Lista de despesas" /></form></td>

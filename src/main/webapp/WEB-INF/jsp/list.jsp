@@ -43,7 +43,7 @@
 
     <table>
         <tr>
-            <td><form action="/home.jsp" method="get">
+            <td><form action="/" method="get">
                 <input type="submit" value="Voltar" /></form></td>
             <td><form action="/form" method="get">
                 <input type="submit" value="Inserir nova despesa" /></form></td>

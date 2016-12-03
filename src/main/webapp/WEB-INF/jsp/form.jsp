@@ -94,7 +94,7 @@
         <br/>
         <table>
             <tr>
-                <td><a href="/home.jsp"><input type="button" value="Voltar" /></a></td>
+                <td><a href="/"><input type="button" value="Voltar" /></a></td>
                 <td><input type="reset" name="Repor" /></td>
                 <td><input type="submit" name="Gravar" /></td>
             </tr>

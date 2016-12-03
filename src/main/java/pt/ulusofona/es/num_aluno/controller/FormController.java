@@ -2,6 +2,7 @@ package pt.ulusofona.es.num_aluno.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @Transactional
@@ -23,6 +25,11 @@ public class FormController {
 
     @PersistenceContext
     private EntityManager em;
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String getHome(ModelMap model) {
+        return "home";
+    }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String getList(ModelMap model) {
@@ -122,6 +129,71 @@ public class FormController {
     @RequestMapping(value = "/mapa", method = RequestMethod.GET)
     public String getMap(ModelMap model){
 
+        long id=1;
+        float janTransportes, janAlimentacao, janPropinas, janRenda;
+        janTransportes = janAlimentacao = janPropinas = janRenda = 0f;
+        float fevTransportes, fevAlimentacao, fevPropinas, fevRenda;
+        fevTransportes = fevAlimentacao = fevPropinas = fevRenda = 0f;
+        float marTransportes, marAlimentacao, marPropinas, marRenda;
+        marTransportes = marAlimentacao = marPropinas = marRenda = 0f;
+
+        for (int i=0; i<id; i++) {
+
+            Despesa despesa = em.find(Despesa.class, id);
+
+            String data1 = despesa.getData();
+            String[] parts = data1.split("-");
+            int month = Integer.parseInt(parts[1]);
+
+            if (month == 1) {
+                if (Objects.equals(despesa.getCategoria(), "Tranportes")) {
+                    janTransportes =+ despesa.getValor();
+                    model.addAttribute("janTransportes", janTransportes);
+                } else if (Objects.equals(despesa.getCategoria(), "Alimentação")) {
+                    janAlimentacao =+ despesa.getValor();
+                    model.addAttribute("janAlimentação", janAlimentacao);
+                } else if (Objects.equals(despesa.getCategoria(), "Propinas")) {
+                    janPropinas =+ despesa.getValor();
+                    model.addAttribute("janPropinas", janPropinas);
+                } else if (Objects.equals(despesa.getCategoria(), "Renda")) {
+                    janRenda =+ despesa.getValor();
+                    model.addAttribute("janRenda", janRenda);
+                }
+            }
+            if (month == 2) {
+                if (Objects.equals(despesa.getCategoria(), "Tranportes")) {
+                    fevTransportes =+ despesa.getValor();
+                    model.addAttribute("fevTransportes", fevTransportes);
+                } else if (Objects.equals(despesa.getCategoria(), "Alimentação")) {
+                    fevAlimentacao =+ despesa.getValor();
+                    model.addAttribute("fevAlimentação", fevAlimentacao);
+                } else if (Objects.equals(despesa.getCategoria(), "Propinas")) {
+                    fevPropinas =+ despesa.getValor();
+                    model.addAttribute("fevPropinas", fevPropinas);
+                } else if (Objects.equals(despesa.getCategoria(), "Renda")) {
+                    fevRenda =+ despesa.getValor();
+                    model.addAttribute("fevRenda", fevRenda);
+                }
+            }
+            if (month == 3) {
+                if (Objects.equals(despesa.getCategoria(), "Tranportes")) {
+                    marTransportes =+ despesa.getValor();
+                    model.addAttribute("marTransportes", marTransportes);
+                } else if (Objects.equals(despesa.getCategoria(), "Alimentação")) {
+                    marAlimentacao =+ despesa.getValor();
+                    model.addAttribute("marAlimentação", marAlimentacao);
+                } else if (Objects.equals(despesa.getCategoria(), "Propinas")) {
+                    marPropinas =+ despesa.getValor();
+                    model.addAttribute("marPropinas", marPropinas);
+                } else if (Objects.equals(despesa.getCategoria(), "Renda")) {
+                    marRenda =+ despesa.getValor();
+                    model.addAttribute("marRenda", marRenda);
+                }
+            }
+
+
+            id++;
+        }
 
         return "mapa";
     }
