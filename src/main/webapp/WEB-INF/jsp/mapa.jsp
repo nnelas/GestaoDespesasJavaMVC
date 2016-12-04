@@ -55,88 +55,88 @@
                         <td>${marPropinas}</td>
                         <td>${marRenda}</td>
                         <td>${marTotal}</td>
-                        <td>março.variação</td>
+                        <td>marVariacao</td>
                     </tr>
                     <tr>
                         <th scope="row">Abril</th>
-                        <td>abril.transportes</td>
-                        <td>abril.alimentação</td>
-                        <td>abril.propinas</td>
-                        <td>abril.renda</td>
-                        <td>abril.total</td>
-                        <td>abril.variação</td>
+                        <td>${abrTransportes}</td>
+                        <td>${abrAlimentacao}</td>
+                        <td>${abrPropinas}</td>
+                        <td>${abrRenda}</td>
+                        <td>${abrTotal}</td>
+                        <td>abrVariacao</td>
                     </tr>
                     <tr>
                         <th scope="row">Maio</th>
-                        <td>maio.transportes</td>
-                        <td>maio.alimentação</td>
-                        <td>maio.propinas</td>
-                        <td>maio.renda</td>
-                        <td>maio.total</td>
-                        <td>maio.variação</td>
+                        <td>${maiTransportes}</td>
+                        <td>${maiAlimentacao}</td>
+                        <td>${maiPropinas}</td>
+                        <td>${maiRenda}</td>
+                        <td>${maiTotal}</td>
+                        <td>maiVariacao</td>
                     </tr>
                     <tr>
                         <th scope="row">Junho</th>
-                        <td>junho.transportes</td>
-                        <td>junho.alimentação</td>
-                        <td>junho.propinas</td>
-                        <td>junho.renda</td>
-                        <td>junho.total</td>
-                        <td>junho.variação</td>
+                        <td>${junTransportes}</td>
+                        <td>${junAlimentacao}</td>
+                        <td>${junPropinas}</td>
+                        <td>${junRenda}</td>
+                        <td>${junTotal}</td>
+                        <td>junVariacao</td>
                     </tr>
                     <tr>
                         <th scope="row">Julho</th>
-                        <td>julho.transportes</td>
-                        <td>julho.alimentação</td>
-                        <td>julho.propinas</td>
-                        <td>julho.renda</td>
-                        <td>julho.total</td>
-                        <td>julho.variação</td>
+                        <td>${julTransportes}</td>
+                        <td>${julAlimentacao}</td>
+                        <td>${julPropinas}</td>
+                        <td>${julRenda}</td>
+                        <td>${julTotal}</td>
+                        <td>julVariacao</td>
                     </tr>
                     <tr>
                         <th scope="row">Agosto</th>
-                        <td>agosto.transportes</td>
-                        <td>agosto.alimentação</td>
-                        <td>agosto.propinas</td>
-                        <td>agosto.renda</td>
-                        <td>agosto.total</td>
-                        <td>agosto.variação</td>
+                        <td>${agoTransportes}</td>
+                        <td>${agoAlimentacao}</td>
+                        <td>${agoPropinas}</td>
+                        <td>${agoRenda}</td>
+                        <td>${agoTotal}</td>
+                        <td>agoVariacao</td>
                     </tr>
                     <tr>
                         <th scope="row">Setembro</th>
-                        <td>setembro.transportes</td>
-                        <td>setembro.alimentação</td>
-                        <td>setembro.propinas</td>
-                        <td>setembro.renda</td>
-                        <td>setembro.total</td>
-                        <td>setembro.variação</td>
+                        <td>${setTransportes}</td>
+                        <td>${setAlimentacao}</td>
+                        <td>${setPropinas}</td>
+                        <td>${setRenda}</td>
+                        <td>${setTotal}</td>
+                        <td>setVariacao</td>
                     </tr>
                     <tr>
                         <th scope="row">Outubro</th>
-                        <td>outubro.transportes</td>
-                        <td>outubro.alimentação</td>
-                        <td>outubro.propinas</td>
-                        <td>outubro.renda</td>
-                        <td>outubro.total</td>
-                        <td>outubro.variação</td>
+                        <td>${outTransportes}</td>
+                        <td>${outAlimentacao}</td>
+                        <td>${outPropinas}</td>
+                        <td>${outRenda}</td>
+                        <td>${outTotal}</td>
+                        <td>outVariacao</td>
                     </tr>
                     <tr>
                         <th scope="row">Novembro</th>
-                        <td>novembro.transportes</td>
-                        <td>novembro.alimentação</td>
-                        <td>novembro.propinas</td>
-                        <td>novembro.renda</td>
-                        <td>novembro.total</td>
-                        <td>novembro.variação</td>
+                        <td>${novTransportes}</td>
+                        <td>${novAlimentacao}</td>
+                        <td>${novPropinas}</td>
+                        <td>${novRenda}</td>
+                        <td>${novTotal}</td>
+                        <td>novVariacao</td>
                     </tr>
                     <tr>
                         <th scope="row">Dezembro</th>
-                        <td>dezembro.transportes</td>
-                        <td>dezembro.alimentação</td>
-                        <td>dezembro.propinas</td>
-                        <td>dezembro.renda</td>
-                        <td>dezembro.total</td>
-                        <td>dezembro.variação</td>
+                        <td>${dezTransportes}</td>
+                        <td>${dezAlimentacao}</td>
+                        <td>${dezPropinas}</td>
+                        <td>${dezRenda}</td>
+                        <td>${dezTotal}</td>
+                        <td>dezVariacao</td>
                     </tr>
                 </tbody>
             </table>

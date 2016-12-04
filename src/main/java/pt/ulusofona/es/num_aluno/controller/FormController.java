@@ -132,6 +132,16 @@ public class FormController {
         float janTransportes = 0, janAlimentacao = 0, janPropinas = 0, janRenda = 0;
         float fevTransportes = 0, fevAlimentacao = 0, fevPropinas = 0, fevRenda = 0;
         float marTransportes = 0, marAlimentacao = 0, marPropinas = 0, marRenda = 0;
+        float abrTransportes = 0, abrAlimentacao = 0, abrPropinas = 0, abrRenda = 0;
+        float maiTransportes = 0, maiAlimentacao = 0, maiPropinas = 0, maiRenda = 0;
+        float junTransportes = 0, junAlimentacao = 0, junPropinas = 0, junRenda = 0;
+        float julTransportes = 0, julAlimentacao = 0, julPropinas = 0, julRenda = 0;
+        float agoTransportes = 0, agoAlimentacao = 0, agoPropinas = 0, agoRenda = 0;
+        float setTransportes = 0, setAlimentacao = 0, setPropinas = 0, setRenda = 0;
+        float outTransportes = 0, outAlimentacao = 0, outPropinas = 0, outRenda = 0;
+        float novTransportes = 0, novAlimentacao = 0, novPropinas = 0, novRenda = 0;
+        float dezTransportes = 0, dezAlimentacao = 0, dezPropinas = 0, dezRenda = 0;
+
 
         for (int i=0; i<id; i++) {
 
@@ -192,9 +202,162 @@ public class FormController {
                     model.addAttribute("marTotal", marTransportes + marAlimentacao + marPropinas + marRenda);
                 }
             }
-            id++;
+            if (month == 4) {
+                if (Objects.equals(despesa.getCategoria(), "Tranportes")) {
+                    abrTransportes =+ despesa.getValor();
+                    model.addAttribute("abrTransportes", abrTransportes);
+                } else if (Objects.equals(despesa.getCategoria(), "Alimentação")) {
+                    abrAlimentacao =+ despesa.getValor();
+                    model.addAttribute("abrAlimentacao", abrAlimentacao);
+                } else if (Objects.equals(despesa.getCategoria(), "Propinas")) {
+                    abrPropinas =+ despesa.getValor();
+                    model.addAttribute("abrPropinas", abrPropinas);
+                } else if (Objects.equals(despesa.getCategoria(), "Renda")) {
+                    abrRenda =+ despesa.getValor();
+                    model.addAttribute("abrRenda", abrRenda);
+                } else {
+                    model.addAttribute("abrTotal", abrTransportes + abrAlimentacao + abrPropinas + abrRenda);
+                }
+            }
+            if (month == 5) {
+                if (Objects.equals(despesa.getCategoria(), "Tranportes")) {
+                    maiTransportes =+ despesa.getValor();
+                    model.addAttribute("maiTransportes", maiTransportes);
+                } else if (Objects.equals(despesa.getCategoria(), "Alimentação")) {
+                    maiAlimentacao =+ despesa.getValor();
+                    model.addAttribute("maiAlimentacao", maiAlimentacao);
+                } else if (Objects.equals(despesa.getCategoria(), "Propinas")) {
+                    maiPropinas =+ despesa.getValor();
+                    model.addAttribute("maiPropinas", maiPropinas);
+                } else if (Objects.equals(despesa.getCategoria(), "Renda")) {
+                    maiRenda =+ despesa.getValor();
+                    model.addAttribute("maiRenda", maiRenda);
+                } else {
+                    model.addAttribute("maiTotal", maiTransportes + maiAlimentacao + maiPropinas + maiRenda);
+                }
+            }
+            if (month == 6) {
+                if (Objects.equals(despesa.getCategoria(), "Tranportes")) {
+                    junTransportes =+ despesa.getValor();
+                    model.addAttribute("junTransportes", junTransportes);
+                } else if (Objects.equals(despesa.getCategoria(), "Alimentação")) {
+                    junAlimentacao =+ despesa.getValor();
+                    model.addAttribute("junAlimentacao", junAlimentacao);
+                } else if (Objects.equals(despesa.getCategoria(), "Propinas")) {
+                    junPropinas =+ despesa.getValor();
+                    model.addAttribute("junPropinas", junPropinas);
+                } else if (Objects.equals(despesa.getCategoria(), "Renda")) {
+                    junRenda =+ despesa.getValor();
+                    model.addAttribute("junRenda", junRenda);
+                } else {
+                    model.addAttribute("junTotal", junTransportes + junAlimentacao + junPropinas + junRenda);
+                }
+            }
+            if (month == 7) {
+                if (Objects.equals(despesa.getCategoria(), "Tranportes")) {
+                    julTransportes =+ despesa.getValor();
+                    model.addAttribute("julTransportes", julTransportes);
+                } else if (Objects.equals(despesa.getCategoria(), "Alimentação")) {
+                    julAlimentacao =+ despesa.getValor();
+                    model.addAttribute("julAlimentacao", julAlimentacao);
+                } else if (Objects.equals(despesa.getCategoria(), "Propinas")) {
+                    julPropinas =+ despesa.getValor();
+                    model.addAttribute("julPropinas", julPropinas);
+                } else if (Objects.equals(despesa.getCategoria(), "Renda")) {
+                    julRenda =+ despesa.getValor();
+                    model.addAttribute("julRenda", julRenda);
+                } else {
+                    model.addAttribute("julTotal", julTransportes + julAlimentacao + julPropinas + julRenda);
+                }
+            }
+            if (month == 8) {
+                if (Objects.equals(despesa.getCategoria(), "Tranportes")) {
+                    agoTransportes =+ despesa.getValor();
+                    model.addAttribute("agoTransportes", agoTransportes);
+                } else if (Objects.equals(despesa.getCategoria(), "Alimentação")) {
+                    agoAlimentacao =+ despesa.getValor();
+                    model.addAttribute("agoAlimentacao", agoAlimentacao);
+                } else if (Objects.equals(despesa.getCategoria(), "Propinas")) {
+                    agoPropinas =+ despesa.getValor();
+                    model.addAttribute("agoPropinas", agoPropinas);
+                } else if (Objects.equals(despesa.getCategoria(), "Renda")) {
+                    agoRenda =+ despesa.getValor();
+                    model.addAttribute("agoRenda", agoRenda);
+                } else {
+                    model.addAttribute("agoTotal", agoTransportes + agoAlimentacao + agoPropinas + agoRenda);
+                }
+            }
+            if (month == 9) {
+                if (Objects.equals(despesa.getCategoria(), "Tranportes")) {
+                    setTransportes =+ despesa.getValor();
+                    model.addAttribute("setTransportes", setTransportes);
+                } else if (Objects.equals(despesa.getCategoria(), "Alimentação")) {
+                    setAlimentacao =+ despesa.getValor();
+                    model.addAttribute("setAlimentacao", setAlimentacao);
+                } else if (Objects.equals(despesa.getCategoria(), "Propinas")) {
+                    setPropinas =+ despesa.getValor();
+                    model.addAttribute("setPropinas", setPropinas);
+                } else if (Objects.equals(despesa.getCategoria(), "Renda")) {
+                    setRenda =+ despesa.getValor();
+                    model.addAttribute("setRenda", setRenda);
+                } else {
+                    model.addAttribute("setTotal", setTransportes + setAlimentacao + setPropinas + setRenda);
+                }
+            }
+            if (month == 10) {
+                if (Objects.equals(despesa.getCategoria(), "Tranportes")) {
+                    outTransportes =+ despesa.getValor();
+                    model.addAttribute("outTransportes", outTransportes);
+                } else if (Objects.equals(despesa.getCategoria(), "Alimentação")) {
+                    outAlimentacao =+ despesa.getValor();
+                    model.addAttribute("outAlimentacao", outAlimentacao);
+                } else if (Objects.equals(despesa.getCategoria(), "Propinas")) {
+                    outPropinas =+ despesa.getValor();
+                    model.addAttribute("outPropinas", outPropinas);
+                } else if (Objects.equals(despesa.getCategoria(), "Renda")) {
+                    outRenda =+ despesa.getValor();
+                    model.addAttribute("outRenda", marRenda);
+                } else {
+                    model.addAttribute("outTotal", outTransportes + outAlimentacao + outPropinas + outRenda);
+                }
+            }
+            if (month == 11) {
+                if (Objects.equals(despesa.getCategoria(), "Tranportes")) {
+                    novTransportes =+ despesa.getValor();
+                    model.addAttribute("novTransportes", novTransportes);
+                } else if (Objects.equals(despesa.getCategoria(), "Alimentação")) {
+                    novAlimentacao =+ despesa.getValor();
+                    model.addAttribute("novAlimentacao", novAlimentacao);
+                } else if (Objects.equals(despesa.getCategoria(), "Propinas")) {
+                    novPropinas =+ despesa.getValor();
+                    model.addAttribute("novPropinas", novPropinas);
+                } else if (Objects.equals(despesa.getCategoria(), "Renda")) {
+                    novRenda =+ despesa.getValor();
+                    model.addAttribute("novRenda", novRenda);
+                } else {
+                    model.addAttribute("novTotal", novTransportes + novAlimentacao + novPropinas + novRenda);
+                }
+            }
+            if (month == 12) {
+                if (Objects.equals(despesa.getCategoria(), "Tranportes")) {
+                    dezTransportes = +despesa.getValor();
+                    model.addAttribute("dezTransportes", dezTransportes);
+                } else if (Objects.equals(despesa.getCategoria(), "Alimentação")) {
+                    dezAlimentacao = +despesa.getValor();
+                    model.addAttribute("dezAlimentacao", dezAlimentacao);
+                } else if (Objects.equals(despesa.getCategoria(), "Propinas")) {
+                    dezPropinas = +despesa.getValor();
+                    model.addAttribute("dezPropinas", dezPropinas);
+                } else if (Objects.equals(despesa.getCategoria(), "Renda")) {
+                    dezRenda = +despesa.getValor();
+                    model.addAttribute("dezRenda", dezRenda);
+                } else {
+                    model.addAttribute("dezTotal", dezTransportes + dezAlimentacao + dezPropinas + dezRenda);
+                }
+            } else {
+                id++;
+            }
         }
-
         return "mapa";
     }
 }
