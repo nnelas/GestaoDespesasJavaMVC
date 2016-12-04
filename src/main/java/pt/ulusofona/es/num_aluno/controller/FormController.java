@@ -355,6 +355,78 @@ public class FormController {
                     model.addAttribute("dezTotal", dezTransportes + dezAlimentacao + dezPropinas + dezRenda);
                 }
             } else {
+                model.addAttribute("janTransportes", janTransportes);
+                model.addAttribute("janAlimentacao", janAlimentacao);
+                model.addAttribute("janPropinas", janPropinas);
+                model.addAttribute("janRenda", janRenda);
+                model.addAttribute("janTotal", janTransportes + janAlimentacao + janPropinas + janRenda);
+
+                model.addAttribute("fevTransportes", fevTransportes);
+                model.addAttribute("fevAlimentacao", fevAlimentacao);
+                model.addAttribute("fevPropinas", fevPropinas);
+                model.addAttribute("fevRenda", fevRenda);
+                model.addAttribute("fevTotal", fevTransportes + fevAlimentacao + fevPropinas + fevRenda);
+
+                model.addAttribute("marTransportes", marTransportes);
+                model.addAttribute("marAlimentacao", marAlimentacao);
+                model.addAttribute("marPropinas", marPropinas);
+                model.addAttribute("marRenda", marRenda);
+                model.addAttribute("marTotal", marTransportes + marAlimentacao + marPropinas + marRenda);
+
+                model.addAttribute("abrTransportes", abrTransportes);
+                model.addAttribute("abrAlimentacao", abrAlimentacao);
+                model.addAttribute("abrPropinas", abrPropinas);
+                model.addAttribute("abrRenda", abrRenda);
+                model.addAttribute("abrTotal", abrTransportes + abrAlimentacao + abrPropinas + abrRenda);
+
+                model.addAttribute("maiTransportes", maiTransportes);
+                model.addAttribute("maiAlimentacao", maiAlimentacao);
+                model.addAttribute("maiPropinas", maiPropinas);
+                model.addAttribute("maiRenda", maiRenda);
+                model.addAttribute("maiTotal", maiTransportes + maiAlimentacao + maiPropinas + maiRenda);
+
+                model.addAttribute("junTransportes", junTransportes);
+                model.addAttribute("junAlimentacao", junAlimentacao);
+                model.addAttribute("junPropinas", junPropinas);
+                model.addAttribute("junRenda", junRenda);
+                model.addAttribute("junTotal", junTransportes + junAlimentacao + junPropinas + junRenda);
+
+                model.addAttribute("julTransportes", julTransportes);
+                model.addAttribute("julAlimentacao", julAlimentacao);
+                model.addAttribute("julPropinas", julPropinas);
+                model.addAttribute("julRenda", julRenda);
+                model.addAttribute("julTotal", julTransportes + julAlimentacao + julPropinas + julRenda);
+
+                model.addAttribute("agoTransportes", agoTransportes);
+                model.addAttribute("agoAlimentacao", agoAlimentacao);
+                model.addAttribute("agoPropinas", agoPropinas);
+                model.addAttribute("agoRenda", agoRenda);
+                model.addAttribute("agoTotal", agoTransportes + agoAlimentacao + agoPropinas + agoRenda);
+
+                model.addAttribute("setTransportes", setTransportes);
+                model.addAttribute("setAlimentacao", setAlimentacao);
+                model.addAttribute("setPropinas", setPropinas);
+                model.addAttribute("setRenda", setRenda);
+                model.addAttribute("setTotal", setTransportes + setAlimentacao + setPropinas + setRenda);
+
+                model.addAttribute("outTransportes", outTransportes);
+                model.addAttribute("outAlimentacao", outAlimentacao);
+                model.addAttribute("outPropinas", outPropinas);
+                model.addAttribute("outRenda", outRenda);
+                model.addAttribute("outTotal", outTransportes + outAlimentacao + outPropinas + outRenda);
+
+                model.addAttribute("novTransportes", novTransportes);
+                model.addAttribute("novAlimentacao", novAlimentacao);
+                model.addAttribute("novPropinas", novPropinas);
+                model.addAttribute("novRenda", novRenda);
+                model.addAttribute("novTotal", novTransportes + novAlimentacao + novPropinas + novRenda);
+
+                model.addAttribute("dezTransportes", dezTransportes);
+                model.addAttribute("dezAlimentacao", dezAlimentacao);
+                model.addAttribute("dezPropinas", dezPropinas);
+                model.addAttribute("dezRenda", dezRenda);
+                model.addAttribute("dezTotal", dezTransportes + dezAlimentacao + dezPropinas + dezRenda);
+
                 id++;
             }
         }
