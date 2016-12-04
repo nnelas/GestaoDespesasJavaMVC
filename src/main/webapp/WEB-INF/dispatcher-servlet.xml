@@ -12,7 +12,7 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
-    <context:component-scan base-package="pt.ulusofona.es.num_aluno.controller"/>
+    <context:component-scan base-package="pt.ulusofona.es.g5.controller"/>
 
     <!-- this is necessary for form validation -->
     <mvc:annotation-driven />
@@ -55,7 +55,7 @@
             </bean>
         </property>
 
-        <property name="packagesToScan" value="pt.ulusofona.es.num_aluno.data"/>
+        <property name="packagesToScan" value="pt.ulusofona.es.g5.data"/>
         <property name="jpaProperties">
             <props>
                 <prop key="hibernate.dialect">

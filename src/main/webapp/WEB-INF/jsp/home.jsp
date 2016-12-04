@@ -32,9 +32,9 @@
 
         <br><br>
         <div align="right">
-        <p>Jorge Loureiro</p>
-        <p>Nuno Coelho</p>
-        <p>Nuno Nelas</p>
+        <p>Jorge Loureiro, nº 21501465</p>
+        <p>Nuno Coelho, nº 21502276</p>
+        <p>Nuno Nelas, nº 21502312</p>
         </div>
     </fieldset>
 </div>

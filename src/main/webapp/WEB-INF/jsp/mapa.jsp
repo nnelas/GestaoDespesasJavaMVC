@@ -25,6 +25,7 @@
                         <th>Alimentação</th>
                         <th>Propinas</th>
                         <th>Renda</th>
+                        <th>Outra</th>
                         <th>Total</th>
                         <th>Variação</th>
                     </tr>
@@ -36,8 +37,9 @@
                         <td>${janAlimentacao}</td>
                         <td>${janPropinas}</td>
                         <td>${janRenda}</td>
+                        <td>${janOutro}</td>
                         <td>${janTotal}</td>
-                        <td>janVariacao</td>
+                        <td> - </td>
                     </tr>
                     <tr>
                         <th scope="row">Fevereiro</th>
@@ -45,8 +47,9 @@
                         <td>${fevAlimentacao}</td>
                         <td>${fevPropinas}</td>
                         <td>${fevRenda}</td>
+                        <td>${fevOutro}</td>
                         <td>${fevTotal}</td>
-                        <td>fevVariacao</td>
+                        <td>${fevVariacao}%</td>
                     </tr>
                     <tr>
                         <th scope="row">Março</th>
@@ -54,8 +57,9 @@
                         <td>${marAlimentacao}</td>
                         <td>${marPropinas}</td>
                         <td>${marRenda}</td>
+                        <td>${marOutro}</td>
                         <td>${marTotal}</td>
-                        <td>marVariacao</td>
+                        <td>${marVariacao}%</td>
                     </tr>
                     <tr>
                         <th scope="row">Abril</th>
@@ -63,8 +67,9 @@
                         <td>${abrAlimentacao}</td>
                         <td>${abrPropinas}</td>
                         <td>${abrRenda}</td>
+                        <td>${abrOutro}</td>
                         <td>${abrTotal}</td>
-                        <td>abrVariacao</td>
+                        <td>${abrVariacao}%</td>
                     </tr>
                     <tr>
                         <th scope="row">Maio</th>
@@ -72,8 +77,9 @@
                         <td>${maiAlimentacao}</td>
                         <td>${maiPropinas}</td>
                         <td>${maiRenda}</td>
+                        <td>${maiOutro}</td>
                         <td>${maiTotal}</td>
-                        <td>maiVariacao</td>
+                        <td>${maiVariacao}%</td>
                     </tr>
                     <tr>
                         <th scope="row">Junho</th>
@@ -81,8 +87,9 @@
                         <td>${junAlimentacao}</td>
                         <td>${junPropinas}</td>
                         <td>${junRenda}</td>
+                        <td>${junOutro}</td>
                         <td>${junTotal}</td>
-                        <td>junVariacao</td>
+                        <td>${junVariacao}%</td>
                     </tr>
                     <tr>
                         <th scope="row">Julho</th>
@@ -90,8 +97,9 @@
                         <td>${julAlimentacao}</td>
                         <td>${julPropinas}</td>
                         <td>${julRenda}</td>
+                        <td>${julOutro}</td>
                         <td>${julTotal}</td>
-                        <td>julVariacao</td>
+                        <td>${julVariacao}%</td>
                     </tr>
                     <tr>
                         <th scope="row">Agosto</th>
@@ -99,8 +107,9 @@
                         <td>${agoAlimentacao}</td>
                         <td>${agoPropinas}</td>
                         <td>${agoRenda}</td>
+                        <td>${agoOutro}</td>
                         <td>${agoTotal}</td>
-                        <td>agoVariacao</td>
+                        <td>${agoVariacao}%</td>
                     </tr>
                     <tr>
                         <th scope="row">Setembro</th>
@@ -108,8 +117,9 @@
                         <td>${setAlimentacao}</td>
                         <td>${setPropinas}</td>
                         <td>${setRenda}</td>
+                        <td>${setOutro}</td>
                         <td>${setTotal}</td>
-                        <td>setVariacao</td>
+                        <td>${setVariacao}%</td>
                     </tr>
                     <tr>
                         <th scope="row">Outubro</th>
@@ -117,8 +127,9 @@
                         <td>${outAlimentacao}</td>
                         <td>${outPropinas}</td>
                         <td>${outRenda}</td>
+                        <td>${outOutro}</td>
                         <td>${outTotal}</td>
-                        <td>outVariacao</td>
+                        <td>${outVariacao}%</td>
                     </tr>
                     <tr>
                         <th scope="row">Novembro</th>
@@ -126,8 +137,9 @@
                         <td>${novAlimentacao}</td>
                         <td>${novPropinas}</td>
                         <td>${novRenda}</td>
+                        <td>${novOutro}</td>
                         <td>${novTotal}</td>
-                        <td>novVariacao</td>
+                        <td>${novVariacao}%</td>
                     </tr>
                     <tr>
                         <th scope="row">Dezembro</th>
@@ -135,8 +147,19 @@
                         <td>${dezAlimentacao}</td>
                         <td>${dezPropinas}</td>
                         <td>${dezRenda}</td>
+                        <td>${dezOutro}</td>
                         <td>${dezTotal}</td>
-                        <td>dezVariacao</td>
+                        <td>${dezVariacao}%</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Total</th>
+                        <td>${totalTransportes}</td>
+                        <td>${totalAlimentacao}</td>
+                        <td>${totalPropinas}</td>
+                        <td>${totalRenda}</td>
+                        <td>${totalOutro}</td>
+                        <td>${totalTotal}</td>
+                        <td> - </td>
                     </tr>
                 </tbody>
             </table>

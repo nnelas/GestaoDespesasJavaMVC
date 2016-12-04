@@ -1,4 +1,4 @@
-package pt.ulusofona.es.num_aluno.data;
+package pt.ulusofona.es.g5.data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

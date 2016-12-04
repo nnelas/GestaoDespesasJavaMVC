@@ -1,4 +1,4 @@
-package pt.ulusofona.es.num_aluno.form;
+package pt.ulusofona.es.g5.form;
 
 import org.hibernate.validator.constraints.NotEmpty;
  
