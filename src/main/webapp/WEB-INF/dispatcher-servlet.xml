@@ -27,6 +27,15 @@
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp" />
 
+    <!-- tiles configuration -->
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/tiles/tiles-definitions.xml</value>
+            </list>
+        </property>
+    </bean>
+
     <!-- orm part -->
 
     <!-- use embedded derby database -->
