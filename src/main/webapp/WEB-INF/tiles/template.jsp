@@ -2,59 +2,63 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>Apontamentos</title>
+    <title>Despesas</title>
     <link rel="icon" href="data:;base64,iVBORw0KGgo="> <!-- to prevent favicon requests -->
-    <style type="text/css">
-        body {
-            margin:0px;
-            padding:0px;
-            height:100%;
-            overflow:hidden;
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <script type="text/javascript">
+        function show() { document.getElementById('outra').style.display = 'block'; }
+        function hide() { document.getElementById('outra').style.display = 'none'; }
+
+        function dataSistema() {
+            if (document.getElementById('checkDate').checked) {
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth() + 1;
+                var yyyy = today.getFullYear();
+
+                if (dd < 10) {
+                    dd = '0' + dd
+                }
+
+                if (mm < 10) {
+                    mm = '0' + mm
+                }
+
+                today = yyyy + '-' + mm + '-' + dd;
+                document.getElementById('date').value = today;
+            } else {
+                document.getElementById('date').value = "";
+            }
         }
 
-        .page {
-            min-height:100%;
-            position:relative;
+        function textCounter( field, countfield, maxlimit ) {
+            if ( field.value.length > maxlimit ) {
+                field.value = field.value.substring( 0, maxlimit );
+                field.blur();
+                field.focus();
+                return false;
+            } else {
+                countfield.value = maxlimit - field.value.length;
+            }
         }
-
-        .header {
-            padding:10px;
-            width:100%;
-            text-align:center;
-        }
-
-        .content {
-            padding:10px;
-            padding-bottom:20px; /* Height of the footer element */
-            overflow:hidden;
-        }
-
-        .body {
-            margin:50px 10px 0px 250px;
-        }
-
-        .footer {
-            clear:both;
-            position:absolute;
-            bottom:0;
-            left:0;
-            text-align:center;
-            width:100%;
-            height:20px;
-        }
-
-    </style>
+    </script>
 </head>
 
 
 <html>
-    <body>
-    <div class="page">
-        <tiles:insertAttribute name="header" />
-        <div class="content">
-            <tiles:insertAttribute name="body" />
+<body>
+<br>
+<div class="container">
+    <fieldset>
+        <div class="page">
+            <tiles:insertAttribute name="header" />
+            <div class="content">
+                <tiles:insertAttribute name="body" />
+            </div>
+            <tiles:insertAttribute name="footer" />
         </div>
-        <tiles:insertAttribute name="footer" />
-    </div>
-    </body>
+</div>
+</fieldset>
+</body>
 </html>

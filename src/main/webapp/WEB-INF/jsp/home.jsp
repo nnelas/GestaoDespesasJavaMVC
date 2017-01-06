@@ -6,16 +6,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <title>Despesas</title>
-</head>
-<body>
-<br>
-<div class="container">
-    <fieldset>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+
+<tiles:insertDefinition name="defaultTemplate">
+    <tiles:putAttribute name="body">
+
         <legend>Página de Entrada</legend>
 
         <form action="/form" method="get"><input type="submit" value="Registar despesas" /></form><br>
@@ -32,11 +27,10 @@
 
         <br><br>
         <div align="right">
-        <p>Jorge Loureiro, nº 21501465</p>
-        <p>Nuno Coelho, nº 21502276</p>
-        <p>Nuno Nelas, nº 21502312</p>
+            <p>Jorge Loureiro, nº 21501465</p>
+            <p>Nuno Coelho, nº 21502276</p>
+            <p>Nuno Nelas, nº 21502312</p>
         </div>
-    </fieldset>
-</div>
-</body>
-</html>
+
+    </tiles:putAttribute>
+</tiles:insertDefinition>
