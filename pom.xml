@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>pt.ulusofona.es.num_aluno</groupId>
-    <artifactId>spring-orm</artifactId>
+    <groupId>pt.ulusofona.es.g5</groupId>
+    <artifactId>es-proj-ld01einf01-5</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>Spring ORM</name>
+    <name>ES-PROJ-LD01EINF01-5</name>
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
@@ -73,6 +73,12 @@
             <version>1.2</version>
         </dependency>
 
+        <!-- for tiles -->
+        <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-jsp</artifactId>
+            <version>3.0.5</version>
+        </dependency>
 
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -93,7 +99,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>spring-orm</finalName>
+        <finalName>es-proj-ld01einf01-5</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
