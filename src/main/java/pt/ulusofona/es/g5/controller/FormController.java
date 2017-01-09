@@ -6,7 +6,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.apache.commons.lang.StringUtils;
+import pt.ulusofona.es.g5.data.Categoria;
 import pt.ulusofona.es.g5.data.Despesa;
+import pt.ulusofona.es.g5.form.CategoriaForm;
 import pt.ulusofona.es.g5.form.DespesaForm;
 
 import javax.persistence.EntityManager;
@@ -31,6 +33,71 @@ public class FormController {
         return "home";
     }
 
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    public String getAdmin() {
+        return "admin";
+    }
+
+    @RequestMapping(value = "/403", method = RequestMethod.GET)
+    public String getPermDenied() {
+        return "403";
+    }
+
+    @RequestMapping(value = "/categoria", method = RequestMethod.GET)
+    public String getCategoria(ModelMap model) {
+        List<Categoria> categorias = em.createQuery("select c from Categoria c", Categoria.class).getResultList();
+        model.put("categorias", categorias);
+        model.put("categoriaForm", new CategoriaForm());
+        return "categoria";
+    }
+
+    @RequestMapping(value = "/categoria", method = RequestMethod.POST)
+    public String submitCategoria(@Valid @ModelAttribute("categoriaForm") CategoriaForm categoriaForm,
+                                  BindingResult bindingResult,
+                                  ModelMap model) {
+        if (bindingResult.hasErrors()) {
+            return "categoria";
+        }
+
+        Categoria categoria;
+        if(categoriaForm.getId() != null) {
+            categoria = em.find(Categoria.class, categoriaForm.getId());
+        } else {
+            categoria = new Categoria();
+        }
+
+        categoria.setCategoria(categoriaForm.getCategoria());
+        em.persist(categoria);
+
+        model.addAttribute("message", "Sucesso! A categoria " + categoria.getCategoria() + " foi gravada na BD e foi-lhe atribuído o ID " + categoria.getId());
+        return "adminResult";
+
+    }
+
+    @RequestMapping(value = "/categoriaEdit/{id}", method = RequestMethod.GET)
+    public String editCategoria(ModelMap model, @PathVariable("id") Long id) {
+        Categoria categoria = em.find(Categoria.class, id);
+        CategoriaForm categoriaForm = new CategoriaForm();
+        categoriaForm.setId(categoria.getId());
+        categoriaForm.setCategoria(categoria.getCategoria());
+
+        model.put("categoriaForm", categoriaForm);
+
+        return "categoria";
+    }
+
+    @RequestMapping(value = "/categoriaDelete/{id}", method = RequestMethod.POST)
+    public String deleteCategoria(ModelMap model, @PathVariable("id") Long id) {
+
+        Categoria categoria = em.find(Categoria.class, id);
+
+        em.remove(categoria);
+
+        model.addAttribute("message", "Sucesso! A categoria " + categoria.getCategoria() + " foi eliminada");
+
+        return "adminResult";
+    }
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String getList(ModelMap model) {
 
@@ -42,6 +109,8 @@ public class FormController {
 
     @RequestMapping(value = "/form", method = RequestMethod.GET)
     public String getForm(ModelMap model) {
+        List<Categoria> categorias = em.createQuery("select c from Categoria c", Categoria.class).getResultList();
+        model.put("categorias", categorias);
         model.put("despesaForm", new DespesaForm());
         return "form";
     }

@@ -11,26 +11,21 @@
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
 
-        <legend>Página de Entrada</legend>
+        <legend><ol class="breadcrumb">
+            <li class="breadcrumb-item active">Home</li>
+        </ol></legend>
 
-        <form action="/form" method="get"><input type="submit" value="Registar despesas" /></form><br>
+        <form action="/form" method="get"><button type="submit" class="btn btn-primary btn-lg btn-block">Registar despesas</button></form><br>
 
-        <form action="/list" method="get"><input type="submit" value="Consultar despesas" /></form><br>
+        <form action="/upload" method="get"><button type="submit" class="btn btn-primary btn-lg btn-block">Carregar uma despesa a partir de um .csv</button></form><br>
 
-        <form action="/mapa" method="get"><input type="submit" value="Mapa mensal de despesas" /></form><br><br>
+        <form action="/list" method="get"><button type="submit" class="btn btn-primary btn-lg btn-block">Consultar despesas</button></form><br>
 
-        <br><br><br><br>
+        <form action="/mapa" method="get"><button type="submit" class="btn btn-primary btn-lg btn-block">Mapa mensal de despesas</button></form><br>
 
-        <p>Despesas, Fase 1</p>
-        <p>Projecto prático de Engenharia de Software</p>
-        <p>Grupo 5</p>
+        <form action="" method="get"><button type="submit" class="btn btn-secondary btn-lg btn-block">Mapa mensal de despesas do agregado familiar</button></form><br>
 
-        <br><br>
-        <div align="right">
-            <p>Jorge Loureiro, nº 21501465</p>
-            <p>Nuno Coelho, nº 21502276</p>
-            <p>Nuno Nelas, nº 21502312</p>
-        </div>
+        <br>
 
     </tiles:putAttribute>
 </tiles:insertDefinition>

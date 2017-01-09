@@ -4,7 +4,10 @@
 
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
-        <legend>Lista de despesas</legend>
+        <legend><ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active">Lista de Despesas</li>
+        </ol></legend>
 
         <c:choose>
             <c:when test="${not empty despesas}">
@@ -35,14 +38,15 @@
 
         <br><br>
 
-        <table>
-            <tr>
-                <td><form action="/" method="get">
-                    <input type="submit" value="Voltar" /></form></td>
-                <td><form action="/form" method="get">
-                    <input type="submit" value="Inserir nova despesa" /></form></td>
-            </tr>
-        </table>
+        <div class="btn-toolbar" role="toolbar" align="center">
+            <div class="btn-group mr-2" role="group">
+                <form action="/" method="get"><button type="submit" class="btn btn-secondary">Voltar</button></form>
+            </div>
+            <div class="btn-group" role="group">
+                <form action="/form" method="get"><button type="submit" class="btn btn-primary">Inserir nova despesa</button></form>
+            </div>
+        </div>
+
     </tiles:putAttribute>
 </tiles:insertDefinition>
 

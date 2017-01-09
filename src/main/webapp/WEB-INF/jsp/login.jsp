@@ -5,9 +5,17 @@
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
 
-        <legend>Login</legend>
+        <legend><ol class="breadcrumb">
+            <li class="breadcrumb-item active">Bem-vindo(a)!</li>
+        </ol></legend>
 
         <form action="<c:url value='/login' />" method="post">
+            <c:if test="${param.error != null}"><div class="alert alert-danger" role="alert">
+                <strong>Oh não!</strong> Erro na autenticação.</div><br/></c:if>
+
+
+            <c:if test="${param.logout != null}"><div class="alert alert-success" role="alert">
+                <strong>Boa!</strong> Logout feito com sucesso.</div><br/></c:if>
             <table>
                 <tr>
                     <td><label for="username">Nome de utilizador:</label></td>
@@ -19,12 +27,26 @@
                 </tr>
             </table>
             <br>
-            <div>
-                <input name="submit" type="submit"/>
+
+            <div class="btn-toolbar" role="toolbar" align="center">
+                <div class="btn-group" role="group">
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                </div>
             </div>
+
             <br><br>
-            <c:if test="${param.error != null}"><div>Erro na autenticação</div><br/></c:if>
-            <c:if test="${param.logout != null}"><div>Logout com sucesso</div><br/></c:if>
+
         </form>
+
+        <p>Despesas, Fase 2</p>
+        <p>Projecto prático de Engenharia de Software</p>
+        <p>Grupo 5</p>
+
+        <br><br>
+        <div align="right">
+            <p>Jorge Loureiro, nº 21501465</p>
+            <p>Nuno Coelho, nº 21502276</p>
+            <p>Nuno Nelas, nº 21502312</p>
+        </div>
     </tiles:putAttribute>
 </tiles:insertDefinition>

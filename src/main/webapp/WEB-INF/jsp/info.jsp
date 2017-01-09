@@ -3,7 +3,11 @@
 
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
-        <legend>Informação da despesa com o ID: ${despesa.id}</legend>
+        <legend><ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/list">Lista de Despesas</a></li>
+            <li class="breadcrumb-item active">Informação da despesa com o ID: ${despesa.id}</li>
+        </ol></legend>
 
         <dl class="row">
             <dt class="col-sm-3">Categoria: </dt>
@@ -23,15 +27,17 @@
         </dl>
         <br><br>
 
-        <table>
-            <tr>
-                <td><form action="/list" method="get">
-                    <input type="submit" value="Voltar" /></form></td>
-                <td><form action="/edit/${despesa.id}" method="get">
-                    <input type="submit" value="Editar" /></form></td>
-                <td><form action="/delete/${despesa.id}" method="post">
-                    <input type="submit" value="Apagar" /></form></td>
-            </tr>
-        </table>
+        <div class="btn-toolbar" role="toolbar" align="center">
+            <div class="btn-group mr-2" role="group">
+                <form action="/list" method="get"><button type="submit" class="btn btn-secondary">Voltar</button></form>
+            </div>
+            <div class="btn-group mr-2" role="group">
+                <form action="/edit/${despesa.id}" method="get"><button type="submit" class="btn btn-primary">Editar</button></form>
+            </div>
+            <div class="btn-group" role="group">
+                <form action="/delete/${despesa.id}" method="post"><button type="submit" class="btn btn-danger">Apagar</button></form>
+            </div>
+        </div>
+
     </tiles:putAttribute>
 </tiles:insertDefinition>

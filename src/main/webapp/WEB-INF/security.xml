@@ -8,7 +8,21 @@
         <csrf disabled="true"/>
 
         <intercept-url pattern="/login" access="permitAll"/>
-        <intercept-url pattern="/**" access="hasRole('USER')"/>
+
+        <intercept-url pattern="/" access="hasRole('USER')"/>
+        <intercept-url pattern="/home" access="hasRole('USER')"/>
+        <intercept-url pattern="/form" access="hasRole('USER')"/>
+        <intercept-url pattern="/info" access="hasRole('USER')"/>
+        <intercept-url pattern="/list" access="hasRole('USER')"/>
+        <intercept-url pattern="/mapa" access="hasRole('USER')"/>
+        <intercept-url pattern="/result" access="hasRole('USER')"/>
+        <intercept-url pattern="/uploadForm" access="hasRole('USER')"/>
+
+        <access-denied-handler error-page="/403" />
+        <intercept-url pattern="/admin" access="hasRole('ADMIN')"/>
+        <intercept-url pattern="/categoria" access="hasRole('ADMIN')"/>
+        <intercept-url pattern="/adminResult" access="hasRole('ADMIN')"/>
+
         <form-login login-page="/login" default-target-url="/" authentication-failure-url="/login?error" />
     </http>
 
