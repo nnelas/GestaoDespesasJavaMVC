@@ -17,6 +17,9 @@ public class Despesa implements Serializable {
     private long id;
 
     @Column(nullable = false)
+    private String utilizador;
+
+    @Column(nullable = false)
     private String categoria;
 
     @Column(nullable = false)
@@ -37,6 +40,14 @@ public class Despesa implements Serializable {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getUtilizador() {
+        return utilizador;
+    }
+
+    public void setUtilizador(String utilizador) {
+        this.utilizador = utilizador;
     }
 
     public String getCategoria() {

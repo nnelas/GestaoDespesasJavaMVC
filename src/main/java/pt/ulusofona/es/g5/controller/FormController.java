@@ -13,6 +13,7 @@ import pt.ulusofona.es.g5.form.DespesaForm;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -45,7 +46,8 @@ public class FormController {
     @RequestMapping(value = "/form", method = RequestMethod.POST)
     public String submitForm(@Valid @ModelAttribute("despesaForm") DespesaForm despesaForm,
                              BindingResult bindingResult,
-                             ModelMap model) {
+                             ModelMap model,
+                             Principal user) {
 
         if (bindingResult.hasErrors()) {
             return "form";
@@ -58,7 +60,9 @@ public class FormController {
             despesa = new Despesa();
         }
 
+        String despesaUser = user.getName();
         String despesaCategoria = StringUtils.strip(despesaForm.getCategoria(), ",");
+        despesa.setUtilizador(despesaUser);
         despesa.setCategoria(despesaCategoria);
         despesa.setData(despesaForm.getData());
         despesa.setDescricao(despesaForm.getDescricao());

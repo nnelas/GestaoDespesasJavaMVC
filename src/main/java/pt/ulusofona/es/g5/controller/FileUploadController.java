@@ -16,6 +16,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.validation.Valid;
 import java.io.*;
+import java.security.Principal;
 
 @Controller
 @Transactional
@@ -43,7 +44,8 @@ public class FileUploadController {
     public String handleFileUpload(@Valid @ModelAttribute("uploadForm") UploadForm uploadForm,
                                    BindingResult bindingResult,
                                    @RequestParam("file") MultipartFile file,
-                                   ModelMap model) {
+                                   ModelMap model,
+                                   Principal user) {
 
         if (bindingResult.hasErrors()) {
             return "uploadForm";
@@ -63,6 +65,7 @@ public class FileUploadController {
                     // use comma as separator
                     String[] fileUpload = line.split(cvsSplitBy);
 
+                    String uploadUser = user.getName();
                     String uploadCategoria = "Indefinida";
                     String uploadData = fileUpload[0];
                     String uploadDescricao = fileUpload[1];
@@ -72,6 +75,7 @@ public class FileUploadController {
                     Despesa despesa;
                     despesa = new Despesa();
 
+                    despesa.setUtilizador(uploadUser);
                     despesa.setCategoria(uploadCategoria);
                     despesa.setData(uploadData);
                     despesa.setDescricao(uploadDescricao);

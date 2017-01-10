@@ -12,6 +12,8 @@ public class DespesaForm {
 
     private Long id;
 
+    private String utilizador;
+
     @NotEmpty(message = "- Tem que inserir a categoria de despesa.")
     private String categoria;
 
@@ -27,16 +29,24 @@ public class DespesaForm {
 
     private String localizacao;
 
-    public String getCategoria() {
-        return categoria;
-    }
-
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUtilizador() {
+        return utilizador;
+    }
+
+    public void setUtilizador(String utilizador) {
+        this.utilizador = utilizador;
+    }
+
+    public String getCategoria() {
+        return categoria;
     }
 
     public void setCategoria(String categoria) {

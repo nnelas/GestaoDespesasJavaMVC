@@ -10,6 +10,9 @@
         </ol></legend>
 
         <dl class="row">
+            <dt class="col-sm-3">Utilizador que criou a despesa: </dt>
+            <dd class="col-sm-9">${despesa.utilizador}</dd>
+
             <dt class="col-sm-3">Categoria: </dt>
             <dd class="col-sm-9">${despesa.categoria}</dd>
 
