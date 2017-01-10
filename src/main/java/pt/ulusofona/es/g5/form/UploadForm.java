@@ -6,8 +6,8 @@ import javax.validation.constraints.Size;
 
 public class UploadForm {
 
-    @NotEmpty(message="O nome tem que estar preenchido")
-    @Size(max = 10, message="O nome tem que ter menos de 10 caracteres")
+    @NotEmpty(message="- O nome tem que estar preenchido")
+    @Size(max = 10, message="- O nome tem que ter menos de 10 caracteres")
     private String name;
 
     public String getName() {

@@ -16,7 +16,7 @@
         <intercept-url pattern="/list" access="hasRole('USER')"/>
         <intercept-url pattern="/mapa" access="hasRole('USER')"/>
         <intercept-url pattern="/result" access="hasRole('USER')"/>
-        <intercept-url pattern="/uploadForm" access="hasRole('USER')"/>
+        <intercept-url pattern="/upload" access="hasRole('USER')"/>
 
         <access-denied-handler error-page="/403" />
         <intercept-url pattern="/admin" access="hasRole('ADMIN')"/>

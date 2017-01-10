@@ -4,22 +4,36 @@
 
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
-        <form:form method="POST" enctype="multipart/form-data" modelAttribute="uploadForm">
 
-            <legend><ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item active">Carregar despesas</li>
-            </ol></legend>
+        <legend><ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active">Carregar despesas</li>
+        </ol></legend>
+
+        <form:form method="POST" enctype="multipart/form-data" modelAttribute="uploadForm">
 
             <label for="file">Ficheiro .csv para fazer upload</label>
             <input type="file" name="file" id="file" />
             <br/><br/>
 
-            <form:label path="name">Nome</form:label>
-            <form:input path="name" label="name" />
-            <form:errors path="name" cssClass="error"/><br/>
+            <form:label path="name">Nome do ficheiro:</form:label><br>
+            <form:input path="name" label="name" style="width:100%" placeholder="Nome do ficheiro até 10 caracteres (ex: d20161209)"/>
+            <form:errors path="name" cssClass="error"/><br/><br/>
 
-            <input type="submit" name="Upload"/>
+            <br>
+
+            <div class="btn-toolbar" role="toolbar">
+                <div class="btn-group mr-2" role="group">
+                    <a href="/"><button type="button" class="btn btn-secondary">Voltar</button></a>
+                </div>
+                <div class="btn-group mr-2" role="group">
+                    <button type="reset" class="btn btn-warning">Repor</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </div>
+            </div>
+
         </form:form>
     </tiles:putAttribute>
 </tiles:insertDefinition>

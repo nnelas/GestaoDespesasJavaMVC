@@ -25,21 +25,6 @@ public class FormController {
     @PersistenceContext
     private EntityManager em;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String getHome() {
-        return "home";
-    }
-
-    @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public String getAdmin() {
-        return "admin";
-    }
-
-    @RequestMapping(value = "/403", method = RequestMethod.GET)
-    public String getPermDenied() {
-        return "403";
-    }
-
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String getList(ModelMap model) {
 

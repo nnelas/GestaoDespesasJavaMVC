@@ -9,17 +9,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import pt.ulusofona.es.g5.data.Despesa;
 import pt.ulusofona.es.g5.form.UploadForm;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.validation.Valid;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.*;
 
 @Controller
+@Transactional
 public class FileUploadController {
 
+    @PersistenceContext
+    private EntityManager em;
+
     public static final String UPLOAD_FOLDER = "upload";
+    String cvsSplitBy = ",";
+    String line = "";
 
     // para ter a certeza que existe a pasta upload
     static {
@@ -48,6 +55,31 @@ public class FileUploadController {
                 BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fileName));
                 stream.write(file.getBytes());
                 stream.close();
+
+                BufferedReader inFile = new BufferedReader(new FileReader(fileName));
+
+                while ((line = inFile.readLine()) != null) {
+
+                    // use comma as separator
+                    String[] fileUpload = line.split(cvsSplitBy);
+
+                    String uploadCategoria = "Indefinida";
+                    String uploadData = fileUpload[0];
+                    String uploadDescricao = fileUpload[1];
+                    float uploadValor = Float.parseFloat(fileUpload[2]);
+                    String uploadLocalizacao = "";
+
+                    Despesa despesa;
+                    despesa = new Despesa();
+
+                    despesa.setCategoria(uploadCategoria);
+                    despesa.setData(uploadData);
+                    despesa.setDescricao(uploadDescricao);
+                    despesa.setValor(uploadValor);
+                    despesa.setLocalizacao(uploadLocalizacao);
+                    em.persist(despesa);
+
+                }
 
                 model.put("message", "Sucesso. O ficheiro " + file.getOriginalFilename() + " foi guardado com sucesso!");
                 return "result";
