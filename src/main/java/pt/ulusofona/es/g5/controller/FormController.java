@@ -27,9 +27,12 @@ public class FormController {
     private EntityManager em;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String getList(ModelMap model) {
+    public String getList(ModelMap model,
+                          Principal user) {
 
-        List<Despesa> despesas = em.createQuery("select d from Despesa d order by d.data DESC", Despesa.class).getResultList();
+        String despesaUser = user.getName();
+        List<Despesa> despesas = em.createQuery("select d from Despesa d where d.utilizador = '" + despesaUser + "' order by d.data DESC", Despesa.class).getResultList();
+
         model.put("despesas", despesas);
         return "list";
     }

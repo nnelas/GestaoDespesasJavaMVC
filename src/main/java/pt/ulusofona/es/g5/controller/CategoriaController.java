@@ -15,6 +15,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by nunonelas on 09/01/17.
@@ -23,6 +24,11 @@ import java.util.List;
 @Controller
 @Transactional
 public class CategoriaController {
+
+    String Str1 = "Transportes";
+    String Str2 = "Alimentação";
+    String Str3 = "Propinas";
+    String Str4 = "Renda";
 
     @PersistenceContext
     private EntityManager em;
@@ -43,19 +49,22 @@ public class CategoriaController {
             return "categoria";
         }
 
-        Categoria categoria;
-        if (categoriaForm.getId() != null) {
-            categoria = em.find(Categoria.class, categoriaForm.getId());
+        if(Str1.equalsIgnoreCase(categoriaForm.getCategoria()) || Str2.equalsIgnoreCase(categoriaForm.getCategoria()) || Str3.equalsIgnoreCase(categoriaForm.getCategoria()) || Str4.equalsIgnoreCase(categoriaForm.getCategoria())){
+            model.addAttribute("message", "A categoria " + categoriaForm.getCategoria() + " já existe e pertence ao grupo de categorias predefinidas");
         } else {
-            categoria = new Categoria();
+            Categoria categoria;
+            if (categoriaForm.getId() != null) {
+                categoria = em.find(Categoria.class, categoriaForm.getId());
+            } else {
+                categoria = new Categoria();
+            }
+
+            categoria.setCategoria(categoriaForm.getCategoria());
+            em.persist(categoria);
+
+            model.addAttribute("message", "Sucesso! A categoria " + categoria.getCategoria() + " foi gravada na BD e foi-lhe atribuído o ID " + categoria.getId());
         }
-
-        categoria.setCategoria(categoriaForm.getCategoria());
-        em.persist(categoria);
-
-        model.addAttribute("message", "Sucesso! A categoria " + categoria.getCategoria() + " foi gravada na BD e foi-lhe atribuído o ID " + categoria.getId());
-        return "adminResult";
-
+        return "adminCatResult";
     }
 
     @RequestMapping(value = "/categoriaEdit/{id}", method = RequestMethod.GET)
@@ -79,6 +88,6 @@ public class CategoriaController {
 
         model.addAttribute("message", "Sucesso! A categoria " + categoria.getCategoria() + " foi eliminada");
 
-        return "adminResult";
+        return "adminCatResult";
     }
 }

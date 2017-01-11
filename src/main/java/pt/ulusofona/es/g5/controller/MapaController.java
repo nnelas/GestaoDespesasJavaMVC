@@ -48,7 +48,7 @@ public class MapaController {
             Query query = em.createQuery("SELECT MAX(d.id) FROM Despesa d");
             long idMax = (Long)query.getSingleResult();
 
-            for (long id = 1; id < idMax; id++) {
+            for (long id = 1; id < idMax + 1; id++) {
 
                 Despesa despesa = em.find(Despesa.class, id);
 
