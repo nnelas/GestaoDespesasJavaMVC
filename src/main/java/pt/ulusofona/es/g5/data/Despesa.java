@@ -89,4 +89,32 @@ public class Despesa implements Serializable {
     public void setLocalizacao(String localizacao) {
         this.localizacao = localizacao;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Despesa despesa = (Despesa) o;
+
+        if (id != despesa.id) return false;
+        if (!utilizador.equals(despesa.utilizador)) return false;
+        if (!categoria.equals(despesa.categoria)) return false;
+        if (!data.equals(despesa.data)) return false;
+        if (!descricao.equals(despesa.descricao)) return false;
+        if (!valor.equals(despesa.valor)) return false;
+        return localizacao != null ? localizacao.equals(despesa.localizacao) : despesa.localizacao == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + utilizador.hashCode();
+        result = 31 * result + categoria.hashCode();
+        result = 31 * result + data.hashCode();
+        result = 31 * result + descricao.hashCode();
+        result = 31 * result + valor.hashCode();
+        result = 31 * result + (localizacao != null ? localizacao.hashCode() : 0);
+        return result;
+    }
 }

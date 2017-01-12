@@ -5,7 +5,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.apache.commons.lang.StringUtils;
 import pt.ulusofona.es.g5.data.Categoria;
 import pt.ulusofona.es.g5.data.Despesa;
 import pt.ulusofona.es.g5.form.DespesaForm;
@@ -30,8 +29,7 @@ public class FormController {
     public String getList(ModelMap model,
                           Principal user) {
 
-        String despesaUser = user.getName();
-        List<Despesa> despesas = em.createQuery("select d from Despesa d where d.utilizador = '" + despesaUser + "' order by d.data DESC", Despesa.class).getResultList();
+        List<Despesa> despesas = em.createQuery("select d from Despesa d where d.utilizador = '" + user.getName() + "' order by d.data DESC", Despesa.class).getResultList();
 
         model.put("despesas", despesas);
         return "list";
@@ -40,9 +38,12 @@ public class FormController {
 
     @RequestMapping(value = "/form", method = RequestMethod.GET)
     public String getForm(ModelMap model) {
+
         List<Categoria> categorias = em.createQuery("select c from Categoria c", Categoria.class).getResultList();
+
         model.put("categorias", categorias);
         model.put("despesaForm", new DespesaForm());
+
         return "form";
     }
 
@@ -63,10 +64,8 @@ public class FormController {
             despesa = new Despesa();
         }
 
-        String despesaUser = user.getName();
-        String despesaCategoria = StringUtils.strip(despesaForm.getCategoria(), ",");
-        despesa.setUtilizador(despesaUser);
-        despesa.setCategoria(despesaCategoria);
+        despesa.setUtilizador(user.getName());
+        despesa.setCategoria(despesaForm.getCategoria());
         despesa.setData(despesaForm.getData());
         despesa.setDescricao(despesaForm.getDescricao());
         despesa.setValor(despesaForm.getValor());
@@ -90,8 +89,10 @@ public class FormController {
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String edit(ModelMap model, @PathVariable("id") Long id) {
+
         Despesa despesa = em.find(Despesa.class, id);
         DespesaForm despesaForm = new DespesaForm();
+
         despesaForm.setId(despesa.getId());
         despesaForm.setCategoria(despesa.getCategoria());
         despesaForm.setData(despesa.getData());

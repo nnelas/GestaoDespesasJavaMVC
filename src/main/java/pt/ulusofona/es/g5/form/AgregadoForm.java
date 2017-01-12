@@ -9,7 +9,6 @@ public class AgregadoForm {
 
     private Long id;
 
-    @NotEmpty(message = "- Tem que inserir o agregado a adicionar.")
     private String agregado1;
 
     @NotEmpty(message = "- Tem que inserir o agregado a adicionar.")

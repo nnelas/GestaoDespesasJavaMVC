@@ -62,26 +62,24 @@ public class FileUploadController {
 
                 while ((line = inFile.readLine()) != null) {
 
-                    // use comma as separator
-                    String[] fileUpload = line.split(cvsSplitBy);
+                    try {
+                        String[] fileUpload = line.split(cvsSplitBy);
 
-                    String uploadUser = user.getName();
-                    String uploadCategoria = "Indefinida";
-                    String uploadData = fileUpload[0];
-                    String uploadDescricao = fileUpload[1];
-                    float uploadValor = Float.parseFloat(fileUpload[2]);
-                    String uploadLocalizacao = "";
+                        Despesa despesa;
+                        despesa = new Despesa();
 
-                    Despesa despesa;
-                    despesa = new Despesa();
+                        despesa.setUtilizador(user.getName());
+                        despesa.setCategoria("Indefinida");
+                        despesa.setData(fileUpload[0]);
+                        despesa.setDescricao(fileUpload[1]);
+                        despesa.setValor(Float.parseFloat(fileUpload[2]));
+                        despesa.setLocalizacao("");
+                        em.persist(despesa);
 
-                    despesa.setUtilizador(uploadUser);
-                    despesa.setCategoria(uploadCategoria);
-                    despesa.setData(uploadData);
-                    despesa.setDescricao(uploadDescricao);
-                    despesa.setValor(uploadValor);
-                    despesa.setLocalizacao(uploadLocalizacao);
-                    em.persist(despesa);
+                    } catch (Exception e){
+                        model.put("message", "O .csv tem de obdecer à seguinte estrutura:  data, descrição, valor (ex.: 2016-10-21, Mensalidade Lusófona, 420.12)");
+                        return "result";
+                    }
 
                 }
 

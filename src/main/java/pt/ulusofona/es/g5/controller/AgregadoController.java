@@ -13,7 +13,9 @@ import pt.ulusofona.es.g5.form.AgregadoForm;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -28,17 +30,25 @@ public class AgregadoController {
     private EntityManager em;
 
     @RequestMapping(value = "/agregado", method = RequestMethod.GET)
-    public String getAgregado(ModelMap model) {
-        List<Agregado> agregados = em.createQuery("select a from Agregado a", Agregado.class).getResultList();
+    public String getAgregado(ModelMap model,
+                              Principal user) {
+
+        List<Agregado> agregados = em.createQuery("select a from Agregado a where a.agregado1 = '" + user.getName() + "'", Agregado.class).getResultList();
+        Query query = em.createQuery("select a from Agregado a where a.agregado2 = '" + user.getName() + "'", Agregado.class);
+        agregados.addAll(query.getResultList());
+
         model.put("agregados", agregados);
         model.put("agregadoForm", new AgregadoForm());
+
         return "agregado";
     }
 
     @RequestMapping(value = "/agregado", method = RequestMethod.POST)
     public String submitAgregado(@Valid @ModelAttribute("agregadoForm") AgregadoForm agregadoForm,
                                   BindingResult bindingResult,
-                                  ModelMap model) {
+                                  ModelMap model,
+                                  Principal user) {
+
         if (bindingResult.hasErrors()) {
             return "agregado";
         }
@@ -50,19 +60,22 @@ public class AgregadoController {
             agregado = new Agregado();
         }
 
-        agregado.setAgregado1(agregadoForm.getAgregado1());
+        agregado.setAgregado1(user.getName());
         agregado.setAgregado2(agregadoForm.getAgregado2());
         em.persist(agregado);
 
-        model.addAttribute("message", "Sucesso! O agregado '" + agregado.getAgregado1() + " + " + agregado.getAgregado2() + "' foi gravado na BD e foi-lhe atribuído o ID " + agregado.getId());
-        return "adminAgrResult";
+        model.addAttribute("message", "Sucesso! O utilizador " + agregado.getAgregado2() + " foi adicionado ao seu agregado familiar, foi gravado na BD e foi-lhe atribuído o ID " + agregado.getId());
+
+        return "agregadoResult";
 
     }
 
     @RequestMapping(value = "/agregadoEdit/{id}", method = RequestMethod.GET)
     public String editCategoria(ModelMap model, @PathVariable("id") Long id) {
+
         Agregado agregado = em.find(Agregado.class, id);
         AgregadoForm agregadoForm = new AgregadoForm();
+
         agregadoForm.setId(agregado.getId());
         agregadoForm.setAgregado1(agregado.getAgregado1());
         agregadoForm.setAgregado2(agregado.getAgregado2());
@@ -79,8 +92,8 @@ public class AgregadoController {
 
         em.remove(agregado);
 
-        model.addAttribute("message", "Sucesso! O agregado " + agregado.getAgregado1() + " + " + agregado.getAgregado2() + " foi eliminada");
+        model.addAttribute("message", "Sucesso! O utilizador " + agregado.getAgregado2() + " foi eliminado do seu agregado familiar");
 
-        return "adminAgrResult";
+        return "agregadoResult";
     }
 }

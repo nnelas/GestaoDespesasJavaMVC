@@ -23,6 +23,8 @@
 
         <form action="/mapa" method="get"><button type="submit" class="btn btn-primary btn-lg btn-block">Mapa mensal de despesas</button></form><br>
 
+        <form action="/agregado" method="get"><button type="submit" class="btn btn-primary btn-lg btn-block">Adicionar elementos ao agregado familiar</button></form><br>
+
         <form action="" method="get"><button type="submit" class="btn btn-secondary btn-lg btn-block">Mapa mensal de despesas do agregado familiar</button></form><br>
 
         <br>

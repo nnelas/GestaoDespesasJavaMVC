@@ -35,9 +35,12 @@ public class CategoriaController {
 
     @RequestMapping(value = "/categoria", method = RequestMethod.GET)
     public String getCategoria(ModelMap model) {
+
         List<Categoria> categorias = em.createQuery("select c from Categoria c", Categoria.class).getResultList();
+
         model.put("categorias", categorias);
         model.put("categoriaForm", new CategoriaForm());
+
         return "categoria";
     }
 
@@ -45,6 +48,7 @@ public class CategoriaController {
     public String submitCategoria(@Valid @ModelAttribute("categoriaForm") CategoriaForm categoriaForm,
                                   BindingResult bindingResult,
                                   ModelMap model) {
+
         if (bindingResult.hasErrors()) {
             return "categoria";
         }
@@ -64,13 +68,16 @@ public class CategoriaController {
 
             model.addAttribute("message", "Sucesso! A categoria " + categoria.getCategoria() + " foi gravada na BD e foi-lhe atribuído o ID " + categoria.getId());
         }
+
         return "adminCatResult";
     }
 
     @RequestMapping(value = "/categoriaEdit/{id}", method = RequestMethod.GET)
     public String editCategoria(ModelMap model, @PathVariable("id") Long id) {
+
         Categoria categoria = em.find(Categoria.class, id);
         CategoriaForm categoriaForm = new CategoriaForm();
+
         categoriaForm.setId(categoria.getId());
         categoriaForm.setCategoria(categoria.getCategoria());
 
