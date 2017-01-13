@@ -45,4 +45,33 @@ public class Agregado implements Serializable {
     public void setAgregado2(String agregado2) {
         this.agregado2 = agregado2;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Agregado agregado = (Agregado) o;
+
+        if (id != agregado.id) return false;
+        if (!agregado1.equals(agregado.agregado1)) return false;
+        return agregado2.equals(agregado.agregado2);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + agregado1.hashCode();
+        result = 31 * result + agregado2.hashCode();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Agregado{" +
+                "id=" + id +
+                ", agregado1='" + agregado1 + '\'' +
+                ", agregado2='" + agregado2 + '\'' +
+                '}';
+    }
 }

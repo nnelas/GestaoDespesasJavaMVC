@@ -17,7 +17,7 @@
 
         <form action="/categoria" method="get"><button type="submit" class="btn btn-primary btn-lg btn-block">Customizar categorias</button></form><br>
 
-        <form action="/agregado" method="get"><button type="submit" class="btn btn-primary btn-lg btn-block">Adicionar elementos ao agregado familiar</button></form><br><br><br>
+        <br><br><br>
 
         <form action="/" method="get"><button type="submit" class="btn btn-primary btn-lg btn-block">Voltar à página principal</button></form><br>
 

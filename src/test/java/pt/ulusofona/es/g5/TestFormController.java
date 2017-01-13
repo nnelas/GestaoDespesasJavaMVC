@@ -1,5 +1,6 @@
 package pt.ulusofona.es.g5;
 
+import com.sun.security.auth.UserPrincipal;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,7 +41,7 @@ public class TestFormController {
 
         List<Despesa> expectedListaDespesas = new ArrayList<Despesa>();
 
-        mvc.perform(get("/list"))
+        mvc.perform(get("/list").principal(new UserPrincipal("user1")))
                 .andExpect(status().isOk())
                 .andExpect(view().name("list"))
                 .andExpect(model().attribute("despesas", expectedListaDespesas));
@@ -60,8 +61,7 @@ public class TestFormController {
         String expectedMessage = "Sucesso! A despesa de " + categoria + " no dia " + data + " foi gravada na BD e foi-lhe atribuído o ID 1";
 
         // POST do formulário
-        mvc.perform(post("/form")
-                .param("utilizador", utilizador)
+        mvc.perform(post("/form").principal(new UserPrincipal("user1"))
                 .param("categoria", categoria)
                 .param("data", data)
                 .param("descricao", descricao)
@@ -86,17 +86,101 @@ public class TestFormController {
         expectedListaDespesas.add(expectedDespesa);
 
         // Obtém lista de utilizadores
-        mvc.perform(get("/list"))
+        mvc.perform(get("/list").principal(new UserPrincipal("user1")))
                 .andExpect(status().isOk())
                 .andExpect(view().name("list"))
                 .andExpect(model().attribute("despesas", expectedListaDespesas));
 
         // Obtém dados do utilizador inserido
-        mvc.perform(get("/info/1"))
+        mvc.perform(get("/info/1").principal(new UserPrincipal("user1")))
                 .andExpect(status().isOk())
                 .andExpect(view().name("info"))
                 .andExpect(model().attribute("despesa", expectedDespesa));
     }
 
+/*    @Test
+    public void testEditaDespesa() throws Exception {
 
+        // dados do formulário
+        String utilizador = "user1";
+        String categoria = "Transportes";
+        String data = "2017-01-11";
+        String descricao = "Passe RL Jan17";
+        Float valor = 36.75f;
+        String localizacao = "";
+
+        String expectedMessage = "Sucesso! A despesa de " + categoria + " no dia " + data + " foi gravada na BD e foi-lhe atribuído o ID 1";
+        String expectedMessage2 = "Sucesso! A despesa de " + categoria + " no dia " + data + " foi eliminada";
+
+        // POST do formulário
+        mvc.perform(post("/form").principal(new UserPrincipal("user1"))
+                .param("categoria", categoria)
+                .param("data", data)
+                .param("descricao", descricao)
+                .param("valor", valor.toString())
+                .param("localizacao", localizacao))
+                .andExpect(status().isOk())
+                .andExpect(view().name("result"))
+                .andExpect(model().attribute("message", expectedMessage));
+
+
+        // dados do utilizador que vai ser inserido na BD
+        Despesa expectedDespesa = new Despesa();
+        expectedDespesa.setId(1);
+        expectedDespesa.setUtilizador(utilizador);
+        expectedDespesa.setCategoria(categoria);
+        expectedDespesa.setData(data);
+        expectedDespesa.setDescricao(descricao);
+        expectedDespesa.setValor(valor);
+        expectedDespesa.setLocalizacao(localizacao);
+
+        // edita utilizador inserido
+        mvc.perform(get("/edit/1").principal(new UserPrincipal("user1")))
+                .andExpect(status().isOk())
+                .andExpect(view().name("result"))
+                .andExpect(model().attribute("message", expectedMessage2));
+    }*/
+
+    @Test
+    public void testApagaDespesa() throws Exception {
+
+        // dados do formulário
+        String utilizador = "user1";
+        String categoria = "Transportes";
+        String data = "2017-01-11";
+        String descricao = "Passe RL Jan17";
+        Float valor = 36.75f;
+        String localizacao = "";
+
+        String expectedMessage = "Sucesso! A despesa de " + categoria + " no dia " + data + " foi gravada na BD e foi-lhe atribuído o ID 1";
+        String expectedMessage2 = "Sucesso! A despesa de " + categoria + " no dia " + data + " foi eliminada";
+
+        // POST do formulário
+        mvc.perform(post("/form").principal(new UserPrincipal("user1"))
+                .param("categoria", categoria)
+                .param("data", data)
+                .param("descricao", descricao)
+                .param("valor", valor.toString())
+                .param("localizacao", localizacao))
+                .andExpect(status().isOk())
+                .andExpect(view().name("result"))
+                .andExpect(model().attribute("message", expectedMessage));
+
+
+        // dados do utilizador que vai ser inserido na BD
+        Despesa expectedDespesa = new Despesa();
+        expectedDespesa.setId(1);
+        expectedDespesa.setUtilizador(utilizador);
+        expectedDespesa.setCategoria(categoria);
+        expectedDespesa.setData(data);
+        expectedDespesa.setDescricao(descricao);
+        expectedDespesa.setValor(valor);
+        expectedDespesa.setLocalizacao(localizacao);
+
+        // elimina utilizador inserido
+        mvc.perform(post("/delete/1").principal(new UserPrincipal("user1")))
+                .andExpect(status().isOk())
+                .andExpect(view().name("result"))
+                .andExpect(model().attribute("message", expectedMessage2));
+    }
 }
