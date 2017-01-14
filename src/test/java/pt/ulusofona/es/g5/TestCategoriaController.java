@@ -94,12 +94,6 @@ public class TestCategoriaController {
                 .andExpect(view().name("adminCatResult"))
                 .andExpect(model().attribute("message", expectedMessage));
 
-
-        // dados da categoria que vai ser inserido na BD
-        Categoria expectedCategoria = new Categoria();
-        expectedCategoria.setId(1);
-        expectedCategoria.setCategoria(categoria);
-
         // edita despesa inserida
         mvc.perform(get("/categoriaEdit/1").principal(new UserPrincipal("admin"))
                 .param("id", id.toString()))
@@ -108,6 +102,7 @@ public class TestCategoriaController {
 
         // dados do formulário editado
         String categoria2 = "Teste2";
+
         String expectedMessage2 = "Sucesso! A categoria " + categoria2 + " foi gravada na BD e foi-lhe atribuído o ID 1";
 
         // POST do formulário editado
@@ -117,7 +112,6 @@ public class TestCategoriaController {
                 .andExpect(status().isOk())
                 .andExpect(view().name("adminCatResult"))
                 .andExpect(model().attribute("message", expectedMessage2));
-
 
         // dados da despesa editada que vai ser inserido na BD
         Categoria expectedCategoria2 = new Categoria();
@@ -149,12 +143,6 @@ public class TestCategoriaController {
                 .andExpect(status().isOk())
                 .andExpect(view().name("adminCatResult"))
                 .andExpect(model().attribute("message", expectedMessage));
-
-
-        // categoria que vai ser inserida na BD
-        Categoria expectedCategoria = new Categoria();
-        expectedCategoria.setId(1);
-        expectedCategoria.setCategoria(categoria);
 
         // Apaga categoria
         mvc.perform(post("/categoriaDelete/1").principal(new UserPrincipal("user1")))

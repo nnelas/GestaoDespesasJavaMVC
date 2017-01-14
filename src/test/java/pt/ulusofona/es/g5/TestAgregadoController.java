@@ -97,13 +97,6 @@ public class TestAgregadoController {
                 .andExpect(view().name("agregadoResult"))
                 .andExpect(model().attribute("message", expectedMessage));
 
-
-        // dados do utilizador que vai ser inserido na BD
-        Agregado expectedAgregado = new Agregado();
-        expectedAgregado.setId(1);
-        expectedAgregado.setAgregado1(agregado1);
-        expectedAgregado.setAgregado2(agregado2);
-
         // edita utilizador inserido
         mvc.perform(get("/agregadoEdit/1").principal(new UserPrincipal("user1"))
                 .param("id", id.toString()))
@@ -112,6 +105,7 @@ public class TestAgregadoController {
 
         // dados do formulário editado
         String agregado2Novo = "admin";
+
         String expectedMessage2 = "Sucesso! O utilizador " + agregado2Novo + " foi adicionado ao seu agregado familiar, foi gravado na BD e foi-lhe atribuído o ID 1";
 
         // POST do formulário editado
@@ -155,13 +149,6 @@ public class TestAgregadoController {
                 .andExpect(status().isOk())
                 .andExpect(view().name("agregadoResult"))
                 .andExpect(model().attribute("message", expectedMessage));
-
-
-        // dados do utilizador que vai ser inserido na BD
-        Agregado expectedAgregado = new Agregado();
-        expectedAgregado.setId(1);
-        expectedAgregado.setAgregado1(agregado1);
-        expectedAgregado.setAgregado2(agregado2);
 
         // elimina utilizadores que fazem parte do agregado
         mvc.perform(post("/agregadoDelete/1").principal(new UserPrincipal("user1")))

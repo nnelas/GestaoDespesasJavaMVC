@@ -123,17 +123,6 @@ public class TestFormController {
                 .andExpect(view().name("result"))
                 .andExpect(model().attribute("message", expectedMessage));
 
-
-        // dados da despesa que vai ser inserido na BD
-        Despesa expectedDespesa = new Despesa();
-        expectedDespesa.setId(1);
-        expectedDespesa.setUtilizador(utilizador);
-        expectedDespesa.setCategoria(categoria);
-        expectedDespesa.setData(data);
-        expectedDespesa.setDescricao(descricao);
-        expectedDespesa.setValor(valor);
-        expectedDespesa.setLocalizacao(localizacao);
-
         // edita despesa inserida
         mvc.perform(get("/edit/1").principal(new UserPrincipal("user1"))
                 .param("id", id.toString()))
@@ -210,17 +199,6 @@ public class TestFormController {
                 .andExpect(status().isOk())
                 .andExpect(view().name("result"))
                 .andExpect(model().attribute("message", expectedMessage));
-
-
-        // dados da despesa que vai ser inserido na BD
-        Despesa expectedDespesa = new Despesa();
-        expectedDespesa.setId(1);
-        expectedDespesa.setUtilizador(utilizador);
-        expectedDespesa.setCategoria(categoria);
-        expectedDespesa.setData(data);
-        expectedDespesa.setDescricao(descricao);
-        expectedDespesa.setValor(valor);
-        expectedDespesa.setLocalizacao(localizacao);
 
         // elimina despesa inserido
         mvc.perform(post("/delete/1").principal(new UserPrincipal("user1")))
