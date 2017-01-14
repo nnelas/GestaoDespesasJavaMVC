@@ -72,7 +72,7 @@ public class TestFormController {
                 .andExpect(model().attribute("message", expectedMessage));
 
 
-        // dados do utilizador que vai ser inserido na BD
+        // dados da despesa que vai ser inserido na BD
         Despesa expectedDespesa = new Despesa();
         expectedDespesa.setId(1);
         expectedDespesa.setUtilizador(utilizador);
@@ -85,13 +85,13 @@ public class TestFormController {
         List<Despesa> expectedListaDespesas = new ArrayList<Despesa>();
         expectedListaDespesas.add(expectedDespesa);
 
-        // Obtém lista de utilizadores
+        // Obtém lista de despesas
         mvc.perform(get("/list").principal(new UserPrincipal("user1")))
                 .andExpect(status().isOk())
                 .andExpect(view().name("list"))
                 .andExpect(model().attribute("despesas", expectedListaDespesas));
 
-        // Obtém dados do utilizador inserido
+        // Obtém dados da despesa inserida
         mvc.perform(get("/info/1").principal(new UserPrincipal("user1")))
                 .andExpect(status().isOk())
                 .andExpect(view().name("info"))
@@ -167,7 +167,7 @@ public class TestFormController {
                 .andExpect(model().attribute("message", expectedMessage));
 
 
-        // dados do utilizador que vai ser inserido na BD
+        // dados da despesa que vai ser inserido na BD
         Despesa expectedDespesa = new Despesa();
         expectedDespesa.setId(1);
         expectedDespesa.setUtilizador(utilizador);
@@ -177,7 +177,7 @@ public class TestFormController {
         expectedDespesa.setValor(valor);
         expectedDespesa.setLocalizacao(localizacao);
 
-        // elimina utilizador inserido
+        // elimina despesa inserido
         mvc.perform(post("/delete/1").principal(new UserPrincipal("user1")))
                 .andExpect(status().isOk())
                 .andExpect(view().name("result"))
