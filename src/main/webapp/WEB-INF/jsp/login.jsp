@@ -16,16 +16,13 @@
 
             <c:if test="${param.logout != null}"><div class="alert alert-success" role="alert">
                 <strong>Boa!</strong> Logout feito com sucesso.</div><br/></c:if>
-            <table>
-                <tr>
-                    <td><label for="username">Nome de utilizador:</label></td>
-                    <td><input type="text" id="username" name="username"/><br/></td>
-                </tr>
-                <tr>
-                    <td><label for="password">Password:</label></td>
-                    <td><input type="password" id="password" name="password"><br/></td>
-                </tr>
-            </table>
+            <dl class="row">
+                <dt class="col-sm-3"><label for="username">Nome de utilizador:</label></dt>
+                <dd class="col-sm-9"><input type="text" id="username" name="username"/></dd>
+
+                <dt class="col-sm-3"><label for="password">Password:</label></dt>
+                <dd class="col-sm-9"><input type="password" id="password" name="password"></dd>
+            </dl>
             <br>
 
             <div class="btn-toolbar" role="toolbar" align="center">
@@ -37,16 +34,6 @@
             <br><br>
 
         </form>
-
-        <p>Despesas, Fase 2</p>
-        <p>Projecto prático de Engenharia de Software</p>
-        <p>Grupo 5</p>
-
-        <br><br>
-        <div align="right">
-            <p>Jorge Loureiro, nº 21501465</p>
-            <p>Nuno Coelho, nº 21502276</p>
-            <p>Nuno Nelas, nº 21502312</p>
-        </div>
+        <br><br><br><br><br><br><br><br><br><br><br><br>
     </tiles:putAttribute>
 </tiles:insertDefinition>

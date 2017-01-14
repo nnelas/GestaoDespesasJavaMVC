@@ -13,6 +13,16 @@
         </ol></legend>
 
         <form:form method="POST" modelAttribute="despesaForm" action="/form">
+            <input type="hidden" name="submitted" value="true">
+            <c:if test="${param.submitted && (empty param.categoria || empty param.data || empty param.descricao || empty param.valor)}">
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading">Oh não!</h4>
+                        <form:errors path="categoria" cssClass="error"/><br>
+                        <form:errors path="data" cssClass="error"/><br>
+                        <form:errors path="descricao" cssClass="error"/><br>
+                        <form:errors path="valor" cssClass="error"/>
+                </div>
+            </c:if>
             <form:hidden path="id"/>
             <table>
                 <tr>
@@ -42,20 +52,19 @@
                     </c:when>
                 </c:choose>
             </table>
-
-            <form:errors path="categoria" cssClass="error"/><br/>
+            <br/>
 
             <form:label path="data">Data: *</form:label><br/>
             <form:input type="date" id="date" path="data" label="Data" /> <input type="checkbox" id="checkDate" onclick="dataSistema()"/> utilizar a data de hoje<br/>
-            <form:errors path="data" cssClass="error"/><br/>
+            <br/>
 
             <form:label path="descricao">Descrição: *</form:label><br/><input onblur="textCounter(this.form.recipients,this,160);" disabled  onfocus="this.blur();" tabindex="999" maxlength="3" size="3" value="160" name="counter"><small> Caracteres restantes</small>
             <form:input type="text" name="message" path="descricao" label="Descricao" style="width:100%" placeholder="Pequena descrição da despesa (até 160 caracteres)" onblur="textCounter(this,this.form.counter,160);" onkeyup="textCounter(this,this.form.counter,160);"/><br/>
-            <form:errors path="descricao" cssClass="error"/><br/>
+            <br/>
 
             <form:label path="valor">Valor (em €): *</form:label><br/>
             <form:input path="valor" label="Valor" style="width:100%" placeholder="Valor da despesa incluindo cêntimos (ex: 30.25 euros)"/><br/>
-            <form:errors path="valor" cssClass="error"/><br/>
+            <br/>
 
             <form:label path="localizacao">Localização: (opcional)</form:label><br/>
             <form:input type="text" path="localizacao" style="width:100%" label="Localizacao" placeholder="Local onde foi realizada a despesa (ex: Restaurante Portugália na Av. Almirante de Reis)"/><br/><br/>

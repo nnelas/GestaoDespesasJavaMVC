@@ -62,18 +62,19 @@ public class FileUploadController {
 
                 while ((line = inFile.readLine()) != null) {
 
-                    try {
-                        String[] fileUpload = line.split(cvsSplitBy);
-
                         Despesa despesa;
                         despesa = new Despesa();
 
                         despesa.setUtilizador(user.getName());
                         despesa.setCategoria("Indefinida");
+                        despesa.setLocalizacao("");
+
+                    try {
+                        String[] fileUpload = line.split(cvsSplitBy);
+
                         despesa.setData(fileUpload[0]);
                         despesa.setDescricao(fileUpload[1]);
                         despesa.setValor(Float.parseFloat(fileUpload[2]));
-                        despesa.setLocalizacao("");
                         em.persist(despesa);
 
                     } catch (Exception e){

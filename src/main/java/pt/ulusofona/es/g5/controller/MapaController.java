@@ -10,9 +10,11 @@ import pt.ulusofona.es.g5.data.Despesa;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.security.Principal;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -27,7 +29,8 @@ public class MapaController {
     private EntityManager em;
 
     @RequestMapping(value = "/mapa", method = RequestMethod.GET)
-    public String getMap(ModelMap model){
+    public String getMap(ModelMap model,
+                         Principal user){
 
         float janTransportes = 0.0f, janAlimentacao = 0.0f, janPropinas = 0.0f, janRenda = 0.0f, janOutro = 0.0f, janTotal = 0.0f;
         float fevTransportes = 0.0f, fevAlimentacao = 0.0f, fevPropinas = 0.0f, fevRenda = 0.0f, fevOutro = 0.0f, fevTotal = 0.0f, fevVariacao = 0.0f;
@@ -41,16 +44,17 @@ public class MapaController {
         float outTransportes = 0.0f, outAlimentacao = 0.0f, outPropinas = 0.0f, outRenda = 0.0f, outOutro = 0.0f, outTotal = 0.0f, outVariacao = 0.0f;
         float novTransportes = 0.0f, novAlimentacao = 0.0f, novPropinas = 0.0f, novRenda = 0.0f, novOutro = 0.0f, novTotal = 0.0f, novVariacao = 0.0f;
         float dezTransportes = 0.0f, dezAlimentacao = 0.0f, dezPropinas = 0.0f, dezRenda = 0.0f, dezOutro = 0.0f, dezTotal = 0.0f, dezVariacao = 0.0f;
-
         float totalTransportes = 0.0f, totalAlimentacao = 0.0f, totalPropinas = 0.0f, totalRenda = 0.0f, totalOutro = 0.0f, totalTotal = 0.0f;
 
-        try{
-            Query query = em.createQuery("SELECT MAX(d.id) FROM Despesa d");
-            long idMax = (Long)query.getSingleResult();
+        List<Despesa> despesas = em.createQuery("select d from Despesa d where d.utilizador = '" + user.getName() + "'", Despesa.class).getResultList();
 
-            for (long id = 1; id < idMax + 1; id++) {
+        if (despesas.isEmpty()) {
+            model.addAttribute("message", "Ainda não tem despesas.");
 
-                Despesa despesa = em.find(Despesa.class, id);
+            return "result";
+        } else {
+
+            for (Despesa despesa: despesas) {
 
                 String data = despesa.getData();
                 String[] parts = data.split("-");
@@ -83,7 +87,6 @@ public class MapaController {
                             fevAlimentacao = +despesa.getValor();
                         } else if (Objects.equals(despesa.getCategoria(), "Propinas")) {
                             fevPropinas = +despesa.getValor();
-                            model.addAttribute("fevPropinas", fevPropinas);
                         } else if (Objects.equals(despesa.getCategoria(), "Renda")) {
                             fevRenda = +despesa.getValor();
                         } else {
@@ -367,11 +370,6 @@ public class MapaController {
                 model.addAttribute("totalTotal", totalTotal);
             }
             return "mapa";
-
-        } catch (java.lang.NullPointerException e){
-            model.addAttribute("message", "Não tem despesas.");
-
-            return "result";
         }
     }
 }

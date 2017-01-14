@@ -10,20 +10,20 @@
         </ol></legend>
 
         <dl class="row">
-            <dt class="col-sm-3">Utilizador que criou a despesa: </dt>
-            <dd class="col-sm-9">${despesa.utilizador}</dd>
+            <dt class="col-sm-3">Utilizador: </dt>
+            <dd class="col-sm-9">${despesa.utilizador}</dd><br>
 
             <dt class="col-sm-3">Categoria: </dt>
-            <dd class="col-sm-9">${despesa.categoria}</dd>
+            <dd class="col-sm-9">${despesa.categoria}</dd><br>
 
             <dt class="col-sm-3">Data: </dt>
-            <dd class="col-sm-9">${despesa.data}</dd>
+            <dd class="col-sm-9">${despesa.data}</dd><br>
 
             <dt class="col-sm-3">Descrição:</dt>
-            <dd class="col-sm-9">${despesa.descricao}</dd>
+            <dd class="col-sm-9">${despesa.descricao}</dd><br>
 
             <dt class="col-sm-3">Valor:</dt>
-            <dd class="col-sm-9">${despesa.valor}€</dd>
+            <dd class="col-sm-9">${despesa.valor}€</dd><br>
 
             <dt class="col-sm-3">Localização:</dt>
             <dd class="col-sm-9">${despesa.localizacao}</dd>

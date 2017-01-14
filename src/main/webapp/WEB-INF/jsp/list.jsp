@@ -32,7 +32,7 @@
                 </table>
             </c:when>
             <c:otherwise>
-                <p>Não tem despesas.</p>
+                <p>Ainda não tem despesas.</p>
             </c:otherwise>
         </c:choose>
 

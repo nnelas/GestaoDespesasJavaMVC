@@ -44,9 +44,16 @@
 
         <form:form method="POST" modelAttribute="categoriaForm" action="/categoria">
             <form:hidden path="id"/>
+            <input type="hidden" name="submitted" value="true">
+            <c:if test="${param.submitted && empty param.categoria}">
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading">Oh não!</h4>
+                    <form:errors path="categoria" cssClass="error"/>
+                </div>
+            </c:if>
             <form:label path="categoria">Nome da categoria a adicionar: *</form:label><br/>
             <form:input path="categoria" label="Categoria" style="width:100%" placeholder="Nome da categoria a adicionar (ex: Lazer)"/><br/>
-            <form:errors path="categoria" cssClass="error"/><br/>
+            <br/>
 
             <div class="btn-toolbar" role="toolbar" align="center">
                 <div class="btn-group" role="group">

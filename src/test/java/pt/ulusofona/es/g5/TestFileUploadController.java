@@ -42,7 +42,7 @@ public class TestFileUploadController {
     public void shouldSaveUploadedFile() throws Exception {
 
         String csv = "2017-01-11,Upload,123";
-        // emula um ficheiro que está a ser uploaded cujo conteúdo é "Blabla" e o nome é "test.txt"
+        // emula um ficheiro que está a ser uploaded cujo conteúdo é "2017-01-11,Upload,123" e o nome é "test.csv"
         MockMultipartFile multipartFile =
                 new MockMultipartFile("file", "test.csv", "text/csv",
                         csv.getBytes("utf-8"));
@@ -50,7 +50,7 @@ public class TestFileUploadController {
         String expectedMessage = "Sucesso. O ficheiro test.csv foi guardado com sucesso!";
 
         this.mvc.perform(fileUpload("/upload")
-                .file(multipartFile)
+                .file(multipartFile).principal(new UserPrincipal("user1"))
                 .param("name", "teste"))
                 .andExpect(status().isOk())
                 .andExpect(model().attribute("message", expectedMessage));

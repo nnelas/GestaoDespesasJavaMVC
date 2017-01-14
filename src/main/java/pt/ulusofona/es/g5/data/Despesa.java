@@ -117,4 +117,17 @@ public class Despesa implements Serializable {
         result = 31 * result + (localizacao != null ? localizacao.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Despesa{" +
+                "id=" + id +
+                ", utilizador='" + utilizador + '\'' +
+                ", categoria='" + categoria + '\'' +
+                ", data='" + data + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", valor=" + valor +
+                ", localizacao='" + localizacao + '\'' +
+                '}';
+    }
 }

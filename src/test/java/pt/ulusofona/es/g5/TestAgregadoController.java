@@ -81,6 +81,65 @@ public class TestAgregadoController {
     }
 
     @Test
+    public void testEditaAgregado() throws Exception {
+
+        // dados do formulário
+        Long id = 1L;
+        String agregado1 = "user1";
+        String agregado2 = "user2";
+
+        String expectedMessage = "Sucesso! O utilizador " + agregado2 + " foi adicionado ao seu agregado familiar, foi gravado na BD e foi-lhe atribuído o ID 1";
+
+        // POST do formulário
+        mvc.perform(post("/agregado").principal(new UserPrincipal("user1"))
+                .param("agregado2", agregado2))
+                .andExpect(status().isOk())
+                .andExpect(view().name("agregadoResult"))
+                .andExpect(model().attribute("message", expectedMessage));
+
+
+        // dados do utilizador que vai ser inserido na BD
+        Agregado expectedAgregado = new Agregado();
+        expectedAgregado.setId(1);
+        expectedAgregado.setAgregado1(agregado1);
+        expectedAgregado.setAgregado2(agregado2);
+
+        // edita utilizador inserido
+        mvc.perform(get("/agregadoEdit/1").principal(new UserPrincipal("user1"))
+                .param("id", id.toString()))
+                .andExpect(status().isOk())
+                .andExpect(view().name("agregado"));
+
+        // dados do formulário editado
+        String agregado2Novo = "admin";
+        String expectedMessage2 = "Sucesso! O utilizador " + agregado2Novo + " foi adicionado ao seu agregado familiar, foi gravado na BD e foi-lhe atribuído o ID 1";
+
+        // POST do formulário editado
+        mvc.perform(post("/agregado").principal(new UserPrincipal("user1"))
+                .param("id", id.toString())
+                .param("agregado2", agregado2Novo))
+                .andExpect(status().isOk())
+                .andExpect(view().name("agregadoResult"))
+                .andExpect(model().attribute("message", expectedMessage2));
+
+
+        // dados do utilizador editado que vai ser inserido na BD
+        Agregado expectedAgregado2 = new Agregado();
+        expectedAgregado2.setId(1L);
+        expectedAgregado2.setAgregado1(agregado1);
+        expectedAgregado2.setAgregado2(agregado2Novo);
+
+        List<Agregado> expectedListaAgregado = new ArrayList<Agregado>();
+        expectedListaAgregado.add(expectedAgregado2);
+
+        // Obtém lista de utilizadores que fazem parte do agregado
+        mvc.perform(get("/agregado").principal(new UserPrincipal("user1")))
+                .andExpect(status().isOk())
+                .andExpect(view().name("agregado"))
+                .andExpect(model().attribute("agregados", expectedListaAgregado));
+    }
+
+    @Test
     public void testApagaAgregado() throws Exception {
 
         // dados do formulário

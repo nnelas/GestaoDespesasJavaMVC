@@ -39,13 +39,19 @@
                 </table>
             </c:when>
             <c:otherwise>
-                <p>Não tem utilizadores adicionados ao seu agregado familiar.</p>
+                <p>Ainda não tem utilizadores adicionados ao seu agregado familiar.</p>
             </c:otherwise>
         </c:choose>
 
         <form:form method="POST" modelAttribute="agregadoForm" action="/agregado">
+            <input type="hidden" name="submitted" value="true">
             <form:hidden path="id"/>
-
+            <c:if test="${param.submitted && empty param.agregado2}">
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading">Oh não!</h4>
+                    <form:errors path="agregado2" cssClass="error"/>
+                </div>
+            </c:if>
             <form:label path="agregado2">Nome do utilizador a adicionar: *</form:label><br/>
             <select name="agregado2">
                 <option value="" disabled selected hidden>Por favor, escolha um...</option>
@@ -53,7 +59,7 @@
                 <option value="user2">user2</option>
                 <option value="admin">Admin</option>
             </select><br/>
-            <form:errors path="agregado2" cssClass="error"/><br/>
+            <br/>
 
             <div class="btn-toolbar" role="toolbar" align="center">
                 <div class="btn-group" role="group">

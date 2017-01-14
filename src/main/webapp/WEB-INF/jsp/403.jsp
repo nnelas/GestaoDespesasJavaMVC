@@ -11,16 +11,13 @@
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
 
-        <legend>HTTP 403 - Acesso negado</legend>
+        <legend><ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active">HTTP 403 - Acesso Negado</li>
+        </ol></legend>
 
         <p>Lamentamos mas não tem permissões para aceder a esta página.</p>
         <br><br><br>
-
-        <div class="btn-toolbar" role="toolbar" align="center">
-            <div class="btn-group" role="group">
-                <form action="/" method="get"><button type="submit" class="btn btn-primary">Voltar ao início</button></form>
-            </div>
-        </div>
 
     </tiles:putAttribute>
 </tiles:insertDefinition>

@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
@@ -11,6 +12,13 @@
         </ol></legend>
 
         <form:form method="POST" enctype="multipart/form-data" modelAttribute="uploadForm">
+            <input type="hidden" name="submitted" value="true">
+            <c:if test="${param.submitted && empty param.nome}">
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading">Oh não!</h4>
+                    <form:errors path="name" cssClass="error"/>
+                </div>
+            </c:if>
 
             <label for="file">Ficheiro .csv para fazer upload</label>
             <input type="file" name="file" id="file" />
@@ -18,7 +26,7 @@
 
             <form:label path="name">Nome do ficheiro:</form:label><br>
             <form:input path="name" label="name" style="width:100%" placeholder="Nome do ficheiro até 10 caracteres (ex: d20161209)"/>
-            <form:errors path="name" cssClass="error"/><br/><br/>
+            <br/><br/>
 
             <br>
 
