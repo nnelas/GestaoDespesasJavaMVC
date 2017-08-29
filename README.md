@@ -1,12 +1,1 @@
-# README #
-
-This README would normally document whatever steps are necessary to get your application up and running.
-
-### What is this repository for? ###
-
- Trabalho final de Engenharia de Software
-
-
-*  Jorge Loureiro - nº21501465 
-*  Nuno Coelho - nº21502276
-*  Nuno Nelas - nº21502312
+Aplicação em Java e JSP, com a ferramenta IntelliJ IDEA e na arquitectura MVC, que guarda despesas inseridas pelo utilizador numa base de dados e apresenta dados úteis para o utilizador na sua gestão de despesas.
