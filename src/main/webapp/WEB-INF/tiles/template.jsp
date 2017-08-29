@@ -42,9 +42,6 @@
         }
     </script>
 </head>
-
-
-<html>
 <body>
 <br>
 <div class="container">
@@ -56,7 +53,7 @@
             </div>
             <tiles:insertAttribute name="footer" />
         </div>
+    </fieldset>
 </div>
-</fieldset>
 </body>
 </html>

@@ -145,7 +145,7 @@ public class TestCategoriaController {
                 .andExpect(model().attribute("message", expectedMessage));
 
         // Apaga categoria
-        mvc.perform(post("/categoriaDelete/1").principal(new UserPrincipal("user1")))
+        mvc.perform(post("/categoriaDelete/1").principal(new UserPrincipal("admin")))
                 .andExpect(status().isOk())
                 .andExpect(view().name("adminCatResult"))
                 .andExpect(model().attribute("message", expectedMessage2));
